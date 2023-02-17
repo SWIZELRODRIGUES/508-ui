@@ -1,17 +1,42 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import StepFour from '../../components/StepFour';
+import StepOne from '../../components/StepOne';
+import StepThree from '../../components/StepThree';
+import StepTwo from '../../components/StepTwo';
+import Wizard from '../../components/Wizard';
+import './styles/Home.scss';
 
 function Home() {
-    const history = useNavigate()
+    const [currentStep, setCurrentStep] = useState(1)
+    const stepArr = [
+        { stepNo: 1, element: <StepOne /> },
+        { stepNo: 2, element: <StepTwo /> },
+        { stepNo: 3, element: <StepThree /> },
+        { stepNo: 4, element: <StepFour /> },
+    ]
+
     return (
-        <div >
-            Home
-            <button type="button" className="btn btn-primary" onClick={() =>
-                history('/summary')
-            }>
-                Fix
-            </button>
-        </div>
+        <section className="signup-step-container">
+            <div className="container">
+                <div className="row d-flex justify-content-center">
+                    <div className="col-md-8">
+                        <div className="wizard">
+                            <Wizard setCurrentStep={setCurrentStep} />
+                            <form  action="index.html" className="login-box">
+                                <div className="tab-content" id="main_form">
+                                    <>
+                                        {stepArr.find(step => step.stepNo === currentStep)?.element}
+                                        <div className="clearfix"></div>
+                                    </>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     );
 }
 
