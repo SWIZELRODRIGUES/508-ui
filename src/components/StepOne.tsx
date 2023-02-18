@@ -1,26 +1,34 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import Tab from './Tab';
 
+const renderFormInputColumn = (element: ReactElement) => {
+    return (
+        <div className="col-md-6">
+            <div className="form-group">
+                {element}
+            </div>
+        </div>
+    )
+}
 function StepOne() {
     return (
         <Tab id="step1" heading="Step 1">
             <>
                 <div className="row">
-                    <div className="col-md-6">
-                        <div className="form-group">
-                            <label>Project Folder</label>
+                    {renderFormInputColumn(
+                        <>
+                            <label htmlFor="formFile" className="form-label">File</label>
                             <div className="custom-file">
-                                <input type="file" className="custom-file-input" id="customFile" />
-                                <label className="custom-file-label" htmlFor="customFile">Select file</label>
+                                <input className="form-control" type="file" id="formFile" />
                             </div>
-                        </div>
-                    </div>
-                    <div className="col-md-6">
-                        <div className="form-group">
-                            <label>URL</label>
-                            <input className="form-control" type="text" name="name" placeholder="Enter URL" />
-                        </div>
-                    </div>
+                        </>
+                    )}
+                    {renderFormInputColumn(
+                        <>
+                            <label className="form-label" htmlFor='formUrl'>URL</label>
+                            <input className="form-control" type="text" name="name" placeholder="Enter URL" id="formUrl" />
+                        </>
+                    )}
                 </div>
                 <ul className="list-inline pull-right">
                     <li><button type="button" className="default-btn next-step">Upload</button></li>
