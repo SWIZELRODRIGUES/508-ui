@@ -24,16 +24,25 @@ const renderAccordion = (
 }
 function StepTwo() {
     const [isLoading, setIsLoading] = useState(true)
-
+    const [progressCounter, setProgressCounter] = useState(0)
+    const stepProgressArr = ['Checking images...', 'Checking constrast...', 'Verifying...','Completed...']
     setTimeout(() => {
         setIsLoading(false)
     }, 3000)
+
+    setTimeout(() => {
+        if (progressCounter < stepProgressArr.length) {
+            setProgressCounter(progressCounter+1)
+        }
+    }, 500)
     return (
         <Tab id="step2" heading="Step 2">
             <>
-                {/* todo: set interval and then render errors  */}
                 {isLoading ?
-                    <ProgressBar />
+                    <>
+                        <ProgressBar progress={progressCounter+1}/>
+                        {stepProgressArr[progressCounter]}
+                    </>
                     :
                     <div className="accordion" id="accordionExample">
                         {renderAccordion(

@@ -2,29 +2,28 @@ import React from 'react';
 
 type WizardProps = {
     setCurrentStep: Function;
+    currentStep: number;
 }
 
-// const renderStep = ()=>{
-//     return
-// }
+const renderStep = (setCurrentStep: Function, stepNo: number, isActive: boolean) => {
+    return (
+        <li role="presentation" className={isActive ? "active" : "disabled"} onClick={() => setCurrentStep(stepNo)}>
+            <a href={`#step${stepNo}`} data-toggle="tab" aria-controls={`step${stepNo}`} role="tab" aria-expanded="true">
+                <span className="round-tab">{stepNo} </span>
+                <i>Step {stepNo}</i>
+            </a>
+        </li>
+    )
+}
 function Wizard(props: WizardProps) {
-    const { setCurrentStep } = props;
+    const { setCurrentStep, currentStep } = props;
+    const stepsArr = Array.from(Array(4).keys())
+
     return (
         <div className="wizard-inner">
             <div className="connecting-line"></div>
             <ul className="nav nav-tabs" role="tablist">
-                <li role="presentation" className="active" onClick={()=> setCurrentStep(1)}>
-                    <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" aria-expanded="true"><span className="round-tab">1 </span> <i>Step 1</i></a>
-                </li>
-                <li role="presentation" className="disabled" onClick={()=> setCurrentStep(2)}>
-                    <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" aria-expanded="false"><span className="round-tab">2</span> <i>Step 2</i></a>
-                </li>
-                <li role="presentation" className="disabled" onClick={()=> setCurrentStep(3)}>
-                    <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab"><span className="round-tab">3</span> <i>Step 3</i></a>
-                </li>
-                <li role="presentation" className="disabled" onClick={()=> setCurrentStep(4)}>
-                    <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab"><span className="round-tab">4</span> <i>Step 4</i></a>
-                </li>
+                {stepsArr.map(step => renderStep(setCurrentStep, step + 1, step < currentStep))}
             </ul>
         </div>
     );

@@ -21,7 +21,7 @@ function Home() {
                 <div className="row d-flex justify-content-center">
                     <div className="col-md-8">
                         <div className="wizard">
-                            <Wizard setCurrentStep={setCurrentStep} />
+                            <Wizard setCurrentStep={setCurrentStep} currentStep={currentStep}/>
                             <form  action="index.html" className="login-box">
                                 <div className="tab-content" id="main_form">
                                     <>

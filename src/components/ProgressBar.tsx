@@ -1,10 +1,13 @@
 import React from 'react';
 
-// todo: add  logic to update %
-function ProgressBar() {
+type ProgressBarProps = {
+    progress: number;
+}
+function ProgressBar({ progress }: ProgressBarProps) {
+    const width = 25 * progress + '%'
     return (
-        <div className="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow={75} aria-valuemin={0} aria-valuemax={100}>
-            <div className="progress-bar progress-bar-striped progress-bar-animated" style={{width: '75%'}}></div>
+        <div className="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow={25 * progress} aria-valuemin={0} aria-valuemax={100}>
+            <div className="progress-bar progress-bar-striped progress-bar-animated" style={{ width: width }}></div>
         </div>
     );
 }
