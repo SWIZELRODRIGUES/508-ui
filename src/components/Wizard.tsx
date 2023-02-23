@@ -17,11 +17,10 @@ const renderStep = (setCurrentStep: Function, stepNo: number, isActive: boolean)
 }
 function Wizard(props: WizardProps) {
     const { setCurrentStep, currentStep } = props;
-    const stepsArr = Array.from(Array(4).keys())
+    const stepsArr = Array.from(Array(3).keys())
 
     return (
         <div className="wizard-inner">
-            <div className="connecting-line"></div>
             <ul className="nav nav-tabs" role="tablist">
                 {stepsArr.map(step => renderStep(setCurrentStep, step + 1, step < currentStep))}
             </ul>

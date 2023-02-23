@@ -3,16 +3,35 @@ import Tab from './Tab';
 
 function StepFour() {
     return (
-        <Tab id="step4" heading="Step 4">
+        <Tab id="step4" heading="Step 3">
             <>
-            <i className="bi bi-box-arrow-down"></i>
-            {/* todo: update href + file name to be dynamic */}
-            Your fixed folder is ready for download <a href="path_to_file" download="proposed_file_name">here</a>
-            {/* todo: add time it took to create the fixed folder */}
-            </>
+                <div className="row">
+                    <div className='col'>
+                        <i className="bi bi-box-arrow-down "></i>
+                        Your fixed folder is ready for download.
+                    </div>
+                </div>
+                <div className="row">
+                    <div className='col'>
+                        <button type="button" className="btn btn-primary ">
+                            Download fixed folder
+                            <a href="path_to_log_file" download="log_file_name"></a>
+                        </button>
+                    </div>
+                </div>
 
+                <div className="row">
+                    <div className='col'>
+
+                        <button type="button" className="btn btn-primary col">
+                            Download log file
+                            <a href="path_to_log_file" download="log_file_name"></a>
+                        </button>
+                    </div>
+                </div>
+
+            </>
         </Tab>
     );
 }
-
 export default StepFour;

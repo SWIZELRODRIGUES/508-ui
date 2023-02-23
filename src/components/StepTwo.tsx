@@ -1,70 +1,136 @@
-import React, { useState } from 'react';
-import ProgressBar from './ProgressBar';
-import Tab from './Tab';
+//@ts-nocheck
+import React, { ReactElement, useState } from 'react';
+import ImageAltIssue from './ImageAltIssue';
+import './styles/StepTwo.scss'
 
-const renderAccordion = (
-    name: string,
-    body: string,
-    id: string
-) => {
+type Error = {
+    message: string;
+    id: string;
+    category: string;
+    nodes: NodeErr[];
+    description: string;
+}
+
+type NodeErr = {
+    failureSummary: string;
+    html: string;
+}
+
+type StepTwoProps = {
+    setCurrentStep: Function;
+}
+
+const renderFormInputColumn = (element: ReactElement) => {
     return (
-        <div className="accordion-item">
-            <h2 className="accordion-header" id={`heading${id}`}>
-                <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${id}`} aria-expanded="true" aria-controls={`collapse${id}`}>
-                    {name}
-                </button>
-            </h2>
-            <div id={`collapse${id}`} className="accordion-collapse collapse show" aria-labelledby={`heading${id}`} data-bs-parent="#accordionExample">
-                <div className="accordion-body">
-                    {body}
-                </div>
+        <div className="col-md-4">
+            <div className="form-group">
+                {element}
             </div>
         </div>
     )
 }
-function StepTwo() {
-    const [isLoading, setIsLoading] = useState(true)
-    const [progressCounter, setProgressCounter] = useState(0)
-    const stepProgressArr = ['Checking images...', 'Checking constrast...', 'Verifying...','Completed...']
-    setTimeout(() => {
-        setIsLoading(false)
-    }, 3000)
+function StepTwo({ setCurrentStep }: StepTwoProps) {
+    const [sourceFolder, setSourceFolder] = useState<File | null>(null);
+    const [hostURL, setHostURL] = useState("");
+    const [accessibilityErrors, setAccessibilityErrors] = useState<any>(
 
-    setTimeout(() => {
-        if (progressCounter < stepProgressArr.length) {
-            setProgressCounter(progressCounter+1)
-        }
-    }, 500)
+    );
+    const [activeTab, setActiveTab] = useState(1)
+    const tabs = [
+        { id: 1, tabName: 'Tags issues', tabIdentifier: 'deprecated', error: ['button-name', 'non-empty-value'] },
+        { id: 2, tabName: 'Missing Alt Tag', tabIdentifier: 'alt', error: ['image-alt'] },
+        { id: 3, tabName: 'Color Contrast', tabIdentifier: 'color', error: ['color-contrast'] },
+
+    ]
+    const handleSourceFolderUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSourceFolder(event.target.files ? event.target.files[0] : null);
+    };
+
+    const handleHostURLChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setHostURL(event.target.value);
+    };
+
+    const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        event.preventDefault();
+        // Send the source folder and host URL to the backend API to get accessibility errors
+
+        const formData = new FormData();
+        formData.append("sourceFolder", sourceFolder || '');
+        formData.append("hostURL", hostURL);
+
+        const response = await fetch("http://127.0.0.1:8000/api/issues?url=https://www.w3schools.com/", {
+            method: "GET",
+        })
+        const data = await response.json();
+        
+        // Set the accessibility errors and their categories in the state
+        setAccessibilityErrors(data);
+    };
+
     return (
-        <Tab id="step2" heading="Step 2">
-            <>
-                {isLoading ?
+        <div className='step-two'>
+            <div className="row user-input-form">
+                {renderFormInputColumn(
                     <>
-                        <ProgressBar progress={progressCounter+1}/>
-                        {stepProgressArr[progressCounter]}
+                        <label htmlFor="formFile" className="form-label">Upload your project folder</label>
+                        <div className="custom-file">
+                            <input className="form-control" type="file" id="formFile" onChange={handleSourceFolderUpload} />
+                        </div>
                     </>
-                    :
-                    <div className="accordion" id="accordionExample">
-                        {renderAccordion(
-                            'Image',
-                            'Img element missing an alt attribute. Use the alt attribute to specify a short text alternative.',
-                            'listone'
-                        )}
-                        {renderAccordion(
-                            'Colour',
-                            'This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 3.01:1. Recommendation:  change background to #008856.',
-                            'listtwo'
-                        )}
-                        {renderAccordion(
-                            'Text',
-                            'This form field should be labelled in some way. Use the label element (either with a "for" attribute or wrapped around the form field), or "title", "aria-label" or "aria-labelledby" attributes as appropriate.',
-                            'listthree'
-                        )}
-                    </div>
-                }
+                )}
+                {renderFormInputColumn(
+                    <>
+                        <label className="form-label" htmlFor='formUrl'>Hosted URL</label>
+                        <input className="form-control" type="text" name="name" placeholder="Enter URL" id="formUrl" onChange={handleHostURLChange} />
+                    </>
+                )}
+                <div className='col-md-4 upload-file-btn'>
+                    <button type="button" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
+                </div>
+            </div>
+            {accessibilityErrors ? (
+                <>
+                    <div  >
+                        <ul className="nav nav-tabs">
+                            {tabs.map((tab) => {
+                                return (
+                                    <li className="nav-item">
+                                        <a className={`nav-link${tab.id === activeTab ? " active" : ""}`} data-bs-toggle="tab" href={`#${tab.tabIdentifier}`} onClick={() => setActiveTab(tab.id)}>{tab.tabName}</a>
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                        <div className="tab-content error-tab-content">
+                            {tabs.map((tab) => {
+                                return (
+                                    <div className={`tab-pane container${tab.id === activeTab ? " active" : " fade"}`}
+                                        id={tab.tabIdentifier}>
+                                        <ul>
 
-            </>
-        </Tab>
+                                            {accessibilityErrors?.filter((error: any) => tab.error?.includes(error.id))?.flatMap(
+                                                (error: any) => error.nodes
+                                            )
+                                                ?.flatMap((error: any) => error.failureSummary)?.map((error: any) =>
+                                                    <li >{error}
+                                                        {tab.id === 2 ? <ImageAltIssue /> : <></>}
+                                                    </li>
+                                                )}
+                                        </ul>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+                </>
+            ) : (
+                <p>Loading accessibility errors...</p>
+            )
+            }
+            <ul className="list-inline pull-right">
+                <li>
+                    <button type="button" className="btn btn-primary" onClick={() => setCurrentStep(3)}>Fix</button></li>
+            </ul>
+        </div >
     );
 }
 
