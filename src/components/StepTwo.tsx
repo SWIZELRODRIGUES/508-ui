@@ -1,5 +1,7 @@
 //@ts-nocheck
 import React, { ReactElement, useState } from 'react';
+import { API_URL } from '../constant';
+import ColorContrastIssue from './ColorContrastIssue';
 import ImageAltIssue from './ImageAltIssue';
 import './styles/StepTwo.scss'
 
@@ -33,8 +35,9 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
     const [sourceFolder, setSourceFolder] = useState<File | null>(null);
     const [hostURL, setHostURL] = useState("");
     const [accessibilityErrors, setAccessibilityErrors] = useState<any>(
-
     );
+    const [errorData, setErrorData] = useState(
+    )
     const [activeTab, setActiveTab] = useState(1)
     const tabs = [
         { id: 1, tabName: 'Tags issues', tabIdentifier: 'deprecated', error: ['button-name', 'non-empty-value'] },
@@ -55,16 +58,28 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
         // Send the source folder and host URL to the backend API to get accessibility errors
 
         const formData = new FormData();
-        formData.append("sourceFolder", sourceFolder || '');
-        formData.append("hostURL", hostURL);
+        formData.append("files", sourceFolder || '');
 
-        const response = await fetch("http://127.0.0.1:8000/api/issues?url=https://www.w3schools.com/", {
+        await fetch(`${API_URL}/upload_zip`, {
+            method: "POST",
+            body: formData,
+        });
+        const response = await fetch(`${API_URL}/issues?url=${hostURL}`, {
             method: "GET",
         })
         const data = await response.json();
-        
+
+
         // Set the accessibility errors and their categories in the state
         setAccessibilityErrors(data);
+
+
+        const errorData = await fetch(`${API_URL}/suggest_changes`, {
+            method: "GET"
+        })
+        const contrastImageErrorData = await errorData.json();
+
+        setErrorData(contrastImageErrorData)
     };
 
     return (
@@ -74,7 +89,7 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
                     <>
                         <label htmlFor="formFile" className="form-label">Upload your project folder</label>
                         <div className="custom-file">
-                            <input className="form-control" type="file" id="formFile" onChange={handleSourceFolderUpload} />
+                            <input className="form-control" type="file" id="formFile" onChange={handleSourceFolderUpload}  accept=".zip,.rar,.7zip"/>
                         </div>
                     </>
                 )}
@@ -88,7 +103,7 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
                     <button type="button" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
                 </div>
             </div>
-            {accessibilityErrors ? (
+            {/* {accessibilityErrors ? ( */}
                 <>
                     <div  >
                         <ul className="nav nav-tabs">
@@ -106,15 +121,16 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
                                     <div className={`tab-pane container${tab.id === activeTab ? " active" : " fade"}`}
                                         id={tab.tabIdentifier}>
                                         <ul>
-
-                                            {accessibilityErrors?.filter((error: any) => tab.error?.includes(error.id))?.flatMap(
-                                                (error: any) => error.nodes
-                                            )
-                                                ?.flatMap((error: any) => error.failureSummary)?.map((error: any) =>
-                                                    <li >{error}
-                                                        {tab.id === 2 ? <ImageAltIssue /> : <></>}
-                                                    </li>
-                                                )}
+                                            {tab.id === 2 ? <ImageAltIssue imageData={errorData ? errorData['img_alt'] : null} /> :
+                                                tab.id === 3 ? <ColorContrastIssue contrastData={errorData ? errorData['color_contrast'] : null} /> :
+                                                    accessibilityErrors?.filter((error: any) => tab.error?.includes(error.id))?.flatMap(
+                                                        (error: any) => error.nodes
+                                                    )
+                                                        ?.flatMap((error: any) => error.failureSummary)?.map((error: any) =>
+                                                            <li >{error}
+                                                            </li>
+                                                        )
+                                            }
                                         </ul>
                                     </div>
                                 )
@@ -122,10 +138,10 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
                         </div>
                     </div>
                 </>
-            ) : (
+            {/* ) : (
                 <p>Loading accessibility errors...</p>
             )
-            }
+            } */}
             <ul className="list-inline pull-right">
                 <li>
                     <button type="button" className="btn btn-primary" onClick={() => setCurrentStep(3)}>Fix</button></li>

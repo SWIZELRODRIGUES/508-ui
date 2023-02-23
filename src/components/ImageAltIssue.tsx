@@ -1,22 +1,69 @@
-import React, {  useState } from 'react';
+//@ts-nocheck
+import React, { ReactElement } from 'react';
 
-function ImageAltIssue() {
-    const [data, setData] = useState({
-        id: '1',
-        image: 'D:/Projects/SemiColon/508-ui/public/logo192.png',
-        suggestedDesc: 'A laptop',
-        userDesc: '',
-        error: 'Alt tag missing'
-    })
+type ImageAltIssueProps = {
+    imageData: any;
+}
+
+const renderFormInputColumn = (element: ReactElement) => {
+    return (
+        <div className="col-md-4">
+            <div className="form-group">
+                {element}
+            </div>
+        </div>
+    )
+}
+function ImageAltIssue({ imageData }: ImageAltIssueProps) {
+    if (!imageData) {
+        return (<></>)
+    }
+
+
+    const formattedImageData = Object.entries(imageData)
+        .flatMap(([key, val]) => {
+            return val['img-alt']?.map(item => {
+                return {
+                    file: key,
+                    ...item
+                }
+            })
+        }
+        )
+
+    const handleDescriptionChange = (file: any, sourceLine: number, inputValue) => {
+        const imageObj = imageData[file]['img-alt']?.find((item: { sourceline: number }) => item.sourceline === sourceLine)
+        if (imageObj) {
+            imageObj['new_value'] = inputValue
+        }
+    }
 
     return (
-        <div id={data.id}>
-            <img className="" src={data.image} alt={data.suggestedDesc} />
-            <p> {data.suggestedDesc}</p>
-            <input type="text" id={`${data.id}-input`} onChange={(e) => {
-                const updatedData = { ...data, userDesc: e.target.value }
-                setData({ ...updatedData })
-            }} />
+        <div >
+            {imageData ?
+                formattedImageData?.map((imageDetails) => {
+                    return (
+                        <>
+                            {/* <img className="" src={data.image} alt={data.suggestedDesc} /> */}
+                            <div className='row'>
+                                {renderFormInputColumn(
+                                    <>
+                                        <label className="form-label" htmlFor='suggestedDesc'>Suggested Description</label>
+                                        <input className="form-control" type="text" name="name" id="suggestedDesc"
+                                            value={imageDetails?.old_value || ""} readOnly />
+                                    </>
+                                )}
+                                {renderFormInputColumn(
+                                    <>
+                                        <label className="form-label" htmlFor='userDesc'></label>
+                                        <input className="form-control" type="text" name="name" placeholder="Enter Description"
+                                            id="userDesc" onChange={(e) => handleDescriptionChange(imageDetails?.file, imageDetails?.sourceline, e?.target?.value)} />
+                                    </>
+                                )}
+                            </div>
+                        </>
+                    )
+                }) : null}
         </div>
     )
 }

@@ -1,22 +1,51 @@
 import React from 'react';
-import ColorContrastChecker from './ColorContrastChecker';
+import { API_URL } from '../constant';
+
 import Tab from './Tab';
 
-type StepThreeProps  ={
-    setCurrentStep: Function;
-}
+function StepThree() {
 
-function StepThree({setCurrentStep}:StepThreeProps) {
+    const handleDownload = async () => {
+        const response = await fetch(`${API_URL}/download_zip`);
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'fixed_folder.zip');
+        document.body.appendChild(link);
+        link.click();
+        link.parentNode?.removeChild(link);
+    }
+
     return (
-        <Tab id="step3" heading="Step 3">
+
+        <Tab id="step4" heading="Step 3">
             <>
-                <ColorContrastChecker />
-                <ul className="list-inline pull-right">
-                    <li><button type="button" className="btn btn-primary" onClick={()=>setCurrentStep(4)}>Generate</button></li>
-                </ul>
+                <div className="row">
+                    <div className='col'>
+                        <i className="bi bi-box-arrow-down "></i>
+                        Your fixed folder is ready for download.
+                    </div>
+                </div>
+                <div className="row">
+                    <div className='col'>
+                        <button type="button" className="btn btn-primary " onClick={handleDownload}>
+                            Download fixed folder
+                        </button>
+                    </div>
+                </div>
+
+                <div className="row">
+                    <div className='col'>
+                        <button type="button" className="btn btn-primary col" onClick={() => window.location.href = '/api/download_log'}>
+                            Download log file
+                        </button>
+                    </div>
+                </div>
             </>
         </Tab>
     );
+
 }
 
 export default StepThree;

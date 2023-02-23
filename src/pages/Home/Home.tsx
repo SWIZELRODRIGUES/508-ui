@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import StepFour from '../../components/StepFour';
 import StepOne from '../../components/StepOne';
+import StepThree from '../../components/StepThree';
 import StepTwo from '../../components/StepTwo';
 import Wizard from '../../components/Wizard';
 import './styles/Home.scss';
@@ -10,7 +10,7 @@ function Home() {
     const stepArr = [
         { stepNo: 1, element: <StepOne setCurrentStep={setCurrentStep} /> },
         { stepNo: 2, element: <StepTwo setCurrentStep={setCurrentStep} /> },
-        { stepNo: 3, element: <StepFour /> },
+        { stepNo: 3, element: <StepThree /> },
     ]
 
     return (
