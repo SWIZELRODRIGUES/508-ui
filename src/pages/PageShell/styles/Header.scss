@@ -1,11 +1,13 @@
 .navbar {
     border-radius: 0;
-    color: white;
+    color: rgb(26, 25, 25);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 9;
+    z-index: 9999;
+    background-color: rgb(225, 222, 222);
+    border-bottom:1px solid grey;
   }
   
   .navbar-brand {
@@ -23,8 +25,8 @@
   }
   
   .navbar-inverse {
-    background-color: #333333;
-    border-color: #080808;
+    background-color: #fdfcfc;
+    // border-color: #fdfcfc;
   }
   
   .navbar-header {

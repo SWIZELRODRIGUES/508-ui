@@ -41,7 +41,7 @@ function StepOne({ setCurrentStep }: StepOneProps) {
             <>
             <div style={{ fontSize: '26px', textAlign: 'center' }}>
   <b>Welcome to FiveO8</b><br></br>
-  <sub>Which language would you like to work on</sub>
+  <sub>Choose the technology you would like to work on</sub>
 </div>
                 <div className="container mx-auto">
                     <div className="row">
