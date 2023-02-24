@@ -9,9 +9,16 @@ type PageShellProps = {
 function PageShell({ children }: PageShellProps) {
     return (
         <div >
+
             <Header />
-            <Sidebar/>
-            {children}
+            <div className='row'>
+                <div className='col-md-2'>
+                    <Sidebar />
+                </div>
+                <div className='col-md-10'>
+                    {children}
+                </div>
+            </div>
         </div>
     );
 }

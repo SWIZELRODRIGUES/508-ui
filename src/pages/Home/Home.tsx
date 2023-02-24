@@ -20,7 +20,6 @@ function Home() {
                     <div >
                         <div className="wizard">
                             {/* <Wizard setCurrentStep={setCurrentStep} currentStep={currentStep} /> */}
-                            <form action="index.html" className="login-box">
                                 <div className="tab-content" id="main_form">
                                     <>
                                         {stepArr.find(step => step.stepNo === currentStep)?.element}
@@ -28,7 +27,6 @@ function Home() {
                                     </>
                                 </div>
 
-                            </form>
                         </div>
                     </div>
                 </div>
