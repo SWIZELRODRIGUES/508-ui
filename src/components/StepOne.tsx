@@ -90,8 +90,8 @@ function StepOne({ setCurrentStep }: StepOneProps) {
                         </div>
 
                         <div className="col-md-4">
-                            <figure className="snip1577" onClick={() => handleTechClick('MongoDB')}>
-                                <img src="https://www.mongodb.com/assets/images/global/favicon.ico" alt="MongoDB" className="img-fluid" />
+                            <figure className="snip1577" onClick={() => handleTechClick('php')}>
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="php" className="img-fluid" />
                                <figcaption>
                                     <h3>MongoDB</h3>
                                 </figcaption>

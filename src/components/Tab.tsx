@@ -9,7 +9,6 @@ type TabProps = {
 function Tab({ children, heading, id }: TabProps) {
     return (
         <div className="tab-pane active" role="tabpanel" id={id}>
-            <h4 className="text-center">{heading}</h4>
             {children}
         </div>
     );

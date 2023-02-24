@@ -20,7 +20,7 @@ function ColorContrastIssue({ contrastData }: ColorContrastIssueProps) {
 
     const formattedContrastData = Object.entries(contrastData)
         .flatMap(([key, val]) => {
-            return val?.map(item => {
+            return val?.map((item: any) => {
                 return {
                     ...item,
                     id: Math.random()
@@ -28,7 +28,14 @@ function ColorContrastIssue({ contrastData }: ColorContrastIssueProps) {
             })
         }
         )
-    const handleColorChange = (id: number, inputValue) => {
+    const handleColorChange = (id: number, inputValue: string) => {
+        const colorObj = formattedContrastData?.find((item: { id: number }) => item.id === id)
+        if (colorObj) {
+            colorObj['suggested_colors']['color'] = inputValue
+        }
+    }
+
+    const handleBackgroundColorChange = (id: number, inputValue: string) => {
         const colorObj = formattedContrastData?.find((item: { id: number }) => item.id === id)
         if (colorObj) {
             colorObj['suggested_colors']['background-color'] = inputValue
@@ -40,17 +47,36 @@ function ColorContrastIssue({ contrastData }: ColorContrastIssueProps) {
         <div >
             {formattedContrastData?.map((contrastDetails) => {
                 return (
-                    <div className='row'>
+                    <div className='row color-picker-row'>
+                        <div className='col-md-1'>
+                            {contrastDetails?.selector}
+                        </div>
                         <div className='col-md-4'>
+                            Current Font Color
+                            <br />
                             <HuePicker
-                                color={formattedContrastData?.find((item: { id: number }) => item.id === contrastDetails?.id)?.suggested_colors?.['background-color']}
+                                color={contrastDetails['current_colors']['color']}
+                            />
+
+                            Suggested Font Color
+                            <br />
+                            <HuePicker
+                                color={contrastDetails['suggested_colors']['color']}
                                 onChange={(color: any) => handleColorChange(contrastDetails?.id, color.hex)} />
                         </div>
                         <div className='col-md-4'>
+                            Current Background Color
+                            <br />
                             <HuePicker
-                                color={formattedContrastData?.find((item: { id: number }) => item.id === contrastDetails?.id)?.suggested_colors?.['background-color']}
-                                onChange={(color: any) => handleColorChange(contrastDetails?.id, color.hex)} />
+                                color={contrastDetails['current_colors']['background-color']}
+                            />
+                            Suggested Background Color
+                            <br />
+                            <HuePicker
+                                color={contrastDetails['suggested_colors']['background-color']}
+                                onChange={(color: any) => handleBackgroundColorChange(contrastDetails?.id, color.hex)} />
                         </div>
+
 
                     </div>
                 )
