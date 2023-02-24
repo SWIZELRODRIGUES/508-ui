@@ -10,6 +10,8 @@ import {
 } from 'cdbreact';
 import { NavLink } from 'react-router-dom';
 import './Sidebar.css';
+import log from '../../assets/persistentLogo.svg';
+
 const Sidebar = () => {
   const [selected, setSelected] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -23,14 +25,16 @@ const Sidebar = () => {
   };
 
   return (
-    <div style={{ position: 'fixed', top: 40, left: 0, bottom: 0, zIndex: 999 }}>
+    <div style={{ position: 'fixed', top: -30, left: 0, bottom: 0, zIndex: 999 }}>
       <CDBSidebar className='sidebar-wrapper' textColor="#323130" backgroundColor="#fff" isOpen={isSidebarOpen}>
         <CDBSidebarHeader className="sidebar-header">
+       
         <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
-  <img src="C:\Users\kevin_peter\Documents\semicolon\508-ui\src\assets\508.png" alt="Icon" style={{ width: '24px', height: '24px', marginRight: '16px' }} onClick={toggleSidebar} />
+        <img src={log} alt="Logo" width="50" height="40" />
+  
   FiveO8
 </a>
-
+{/* <img src="C:\Users\kevin_peter\Documents\semicolon\508-ui\src\assets\508.png" alt="Icon" style={{ width: '200px', height: '200px', marginRight: '16px' }} onClick={toggleSidebar} /> */}
         </CDBSidebarHeader>
 
         <CDBSidebarContent className="sidebar-content">
