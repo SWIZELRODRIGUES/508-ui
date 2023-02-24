@@ -4,6 +4,7 @@ import { API_URL } from '../constant';
 import ColorContrastIssue from './ColorContrastIssue';
 import ImageAltIssue from './ImageAltIssue';
 import './styles/StepTwo.scss'
+import Loader from './Loader';
 
 
 type StepTwoProps = {
@@ -19,7 +20,6 @@ const renderFormInputColumn = (element: ReactElement) => {
         </div>
     )
 }
-
 
 const renderTabContent = (activeTab, accessibilityErrors, errorData, tab) => {
     switch (activeTab) {
@@ -40,9 +40,11 @@ const renderTabContent = (activeTab, accessibilityErrors, errorData, tab) => {
 
     }
 }
+
 function StepTwo({ setCurrentStep }: StepTwoProps) {
     const [sourceFolder, setSourceFolder] = useState<File | null>(null);
     const [hostURL, setHostURL] = useState("");
+    const [showLoader, setShowLoader] = useState(false)
     const [accessibilityErrors, setAccessibilityErrors] = useState<any>(
     );
     const [errorData, setErrorData] = useState(
@@ -86,29 +88,38 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
         })
         const contrastImageErrorData = await errorData.json();
         setErrorData(contrastImageErrorData)
+
+        await fetch(`${API_URL}/fix_all`, {
+            method: "POST",
+        })
     };
 
 
     const handleFixAll = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault();
+        setShowLoader(true)
 
-         await fetch(`${API_URL}/update_changes`, {
+        await fetch(`${API_URL}/update_changes`, {
             method: "POST",
             headers: {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json',
-              },
+            },
             body: JSON.stringify(errorData),
         });
 
-         await fetch(`${API_URL}/fix_all`, {
-            method: "POST",
-        })
+        setTimeout(() => {
+            setShowLoader(false)
+            setCurrentStep(3)
+        }, 4000)
 
     };
 
+    console.log(accessibilityErrors)
     return (
         <div className='step-two'>
+            {showLoader &&
+                <Loader />}
             <div className="row user-input-form">
                 {renderFormInputColumn(
                     <>
@@ -137,7 +148,7 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
                     <ul className="nav nav-tabs">
                         {tabs.map((tab) => {
                             return (
-                                <li className="nav-item">
+                                <li className="nav-item" key={tab.id}>
                                     <a className={`nav-link${tab.id === activeTab ? " active" : ""}`} data-bs-toggle="tab"
                                         href={`#${tab.tabIdentifier}`} onClick={() => setActiveTab(tab.id)}>{tab.tabName}</a>
                                 </li>
@@ -148,10 +159,17 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
                         {tabs.map((tab) => {
                             return (
                                 <div className={`tab-pane container${tab.id === activeTab ? " active" : " fade"}`}
+                                    key={tab.tabIdentifier}
                                     id={tab.tabIdentifier}>
-                                    <ul>
-                                        {renderTabContent(activeTab, accessibilityErrors, errorData, tab)}
-                                    </ul>
+                                    {/* {accessibilityErrors ?
+                                        <p class="placeholder-glow">
+                                            <span class="placeholder col-12"></span>
+                                        </p> : */}
+                                        <ul>
+
+                                            {renderTabContent(activeTab, accessibilityErrors, errorData, tab)}
+                                        </ul>
+                                    {/* } */}
                                 </div>
                             )
                         })}
@@ -166,7 +184,6 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
                 <li>
                     <button type="button" className="btn btn-primary" onClick={(event) => {
                         handleFixAll(event)
-                        // setCurrentStep(3)
                     }}
                     >Fix All Issues</button></li>
             </ul>

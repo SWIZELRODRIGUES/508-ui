@@ -19,6 +19,7 @@ function ImageAltIssue({ imageData }: ImageAltIssueProps) {
         return (<></>)
     }
 
+    console.log(imageData)
 
     const formattedImageData = Object.entries(imageData)
         .flatMap(([key, val]) => {
@@ -39,25 +40,29 @@ function ImageAltIssue({ imageData }: ImageAltIssueProps) {
     }
 
     return (
-        <div >
+        <div className="img-alt-issue-div">
             {imageData ?
                 formattedImageData?.map((imageDetails) => {
+                    console.log('**', imageDetails)
                     return (
                         <>
-                            {/* <img className="" src={data.image} alt={data.suggestedDesc} /> */}
                             <div className='row'>
+                                <img className="alt-image" src={imageDetails?.selector?.split('"')[1]} alt={imageDetails?.new_value} />
+
                                 {renderFormInputColumn(
                                     <>
-                                        <label className="form-label" htmlFor='suggestedDesc'>Suggested Description</label>
+                                        <label className="form-label" htmlFor='suggestedDesc'>Current Description</label>
                                         <input className="form-control" type="text" name="name" id="suggestedDesc"
-                                            value={imageDetails?.old_value || ""} readOnly />
+                                            value={imageDetails?.old_value || "Not Alt Text"} readOnly />
                                     </>
                                 )}
                                 {renderFormInputColumn(
                                     <>
-                                        <label className="form-label" htmlFor='userDesc'></label>
-                                        <input className="form-control" type="text" name="name" placeholder="Enter Description"
-                                            id="userDesc" onChange={(e) => handleDescriptionChange(imageDetails?.file, imageDetails?.sourceline, e?.target?.value)} />
+                                        <label className="form-label" htmlFor='userDesc'>Suggested Description</label>
+                                        <input className="form-control" type="text" name="name" placeholder="Enter Description"                        
+                                            defaultValue={imageDetails?.new_value}
+                                            id="userDesc"
+                                            onChange={(e) => handleDescriptionChange(imageDetails?.file, imageDetails?.sourceline, e?.target?.value)} />
                                     </>
                                 )}
                             </div>
