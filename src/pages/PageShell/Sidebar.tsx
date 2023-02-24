@@ -26,9 +26,11 @@ const Sidebar = () => {
     <div style={{ position: 'fixed', top: 40, left: 0, bottom: 0, zIndex: 999 }}>
       <CDBSidebar className='sidebar-wrapper' textColor="#323130" backgroundColor="#fff" isOpen={isSidebarOpen}>
         <CDBSidebarHeader className="sidebar-header">
-          <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
-            <i className="fas fa-universal-access fa-lg" style={{ marginRight: '15px' }} onClick={toggleSidebar}></i> FiveO8
-          </a>
+        <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
+  <img src="C:\Users\kevin_peter\Documents\semicolon\508-ui\src\assets\508.png" alt="Icon" style={{ width: '24px', height: '24px', marginRight: '16px' }} onClick={toggleSidebar} />
+  FiveO8
+</a>
+
         </CDBSidebarHeader>
 
         <CDBSidebarContent className="sidebar-content">
