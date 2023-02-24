@@ -1,5 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:200);
 
+.container{
+  max-width: 500px; /* set a maximum width */
+  // border: #ca5010; /* add a border */
+  padding: 2px;
+  margin: 10px;
+}
+
 .snip1577 {
 
   font-family: 'Montserrat', Arial, sans-serif;
@@ -10,11 +17,11 @@
 
   overflow: hidden;
 
-  margin: 10px;
+  margin: 40px;
 
-  min-width: 230px;
+  min-width: 20px;
 
-  max-width: 315px;
+  max-width: 300px;
 
   width: 100%;
 
@@ -22,12 +29,11 @@
 
   text-align: left;
 
-  font-size: 16px;
+  font-size: 20px;
 
-
+  padding:4px;
+  // border:2px solid red;
 }
-
-
 
 .snip1577 *,
 
@@ -42,6 +48,7 @@
   -webkit-transition: all 0.4s ease;
 
   transition: all 0.4s ease;
+  
 
 }
 
@@ -49,7 +56,7 @@
 
 .snip1577 img {
 
-  max-width: 100%;
+  max-width: 80%;
 
   backface-visibility: hidden;
 
@@ -71,11 +78,12 @@
 
   content: '';
 
-  background-color: #fff;
+  background-color: rgb(252, 249, 249);
 
-  z-index: 1;
+  z-index: 2;
 
   opacity: 0;
+  font-weight: bold;
 
 }
 
@@ -83,7 +91,7 @@
 
 .snip1577:before {
 
-  width: 0;
+  width: 2px;
 
   height: 1px;
 
@@ -109,8 +117,9 @@
 
   bottom: 0;
 
-  padding: 15px 20px;
-
+  padding: 15px 10px;
+  color: black;
+  font-weight: bold;
 }
 
 
@@ -153,7 +162,7 @@
 
   right: 0;
 
-  z-index: 1;
+  z-index: 2;
 
 }
 
@@ -162,15 +171,12 @@
 .snip1577:hover img,
 
 .snip1577.hover img {
-
   zoom: 1;
-
-  filter: alpha(opacity=20);
-
-  -webkit-opacity: 0.2;
-
-  opacity: 0.2;
-
+  filter: alpha(opacity=10);
+  -webkit-opacity: 0.1;
+  opacity: 0.1;
+ border: 2px solid black;
+ padding: 20px;
 }
 
 
@@ -248,3 +254,4 @@
   transition-delay: 0.35s;
 
 }
+

@@ -6,7 +6,7 @@ import './styles/Header.scss';
 function Header() {
     return (
         <>
-            <nav className="navbar navbar-inverse">
+            <nav className="navbar navbar-inverse"  >
                 <div className="container-fluid">
                     <div className="navbar-header">
                         {/* <a className="navbar-brand" href="#">
@@ -15,7 +15,7 @@ function Header() {
                         </a> */}
                     </div>
                     <div className="nav navbar-nav navbar-right">
-                    John Doe
+                    Logged in : John Doe
                     </div>
                 </div>
             </nav>

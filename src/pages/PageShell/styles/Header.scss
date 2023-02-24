@@ -1,11 +1,33 @@
-.navbar{ border-radius: 0; color: white;}
-.navbar-brand{ padding-top: 0; padding-bottom: 0;  height: 60px;}
-.navbar-brand span{ float: left;}
-.navbar-brand span:first-child{ padding-top: 15px;}
-.navbar-inverse{
+.navbar {
+    border-radius: 0;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9;
+  }
+  
+  .navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 60px;
+  }
+  
+  .navbar-brand span {
+    float: left;
+  }
+  
+  .navbar-brand span:first-child {
+    padding-top: 20px;
+  }
+  
+  .navbar-inverse {
     background-color: #333333;
     border-color: #080808;
-}
-.navbar-header{
-margin-left: 6rem;
-}
+  }
+  
+  .navbar-header {
+    margin-left: 6rem;
+  }
+  
