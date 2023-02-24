@@ -9,13 +9,14 @@ function Header() {
             <nav className="navbar navbar-inverse"  >
                 <div className="container-fluid">
                     <div className="navbar-header">
-                        {/* <a className="navbar-brand" href="#">
-                            <span className="persistentLogo"><img src={pslLogo} alt="PersistentLogo" /></span>
-                            <span><img src={five08Logo} alt="Fiveo8Logo" width="100" /></span>
-                        </a> */}
+                        
+                        {<a className="navbar-brand" href="#">
+    <span className="ms-Icon ms-Icon--WaffleOffice365"></span>
+</a>
+}
                     </div>
                     <div className="nav navbar-nav navbar-right">
-                    Logged in : John Doe
+                    Logged in : Shivam Naik
                     </div>
                 </div>
             </nav>

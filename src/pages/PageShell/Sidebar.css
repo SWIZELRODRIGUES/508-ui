@@ -1,0 +1,18 @@
+.sidebar-wrapper {
+    border: 1px solid #ccc;
+  }
+  /* .sidebar-header{
+    border: 2px solid grey;
+  } */
+  
+  .sidebar-menu-item:hover {
+    background-color: #f1f1f1;
+    color: #ca5010;
+  }
+  
+  .sidebar-menu-item.activeClicked,
+  .sidebar-menu-item.activeClicked:hover {
+    background-color: #f1f1f1;
+    color: #ca5010;
+  }
+  
