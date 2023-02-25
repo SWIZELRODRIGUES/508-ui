@@ -54,12 +54,12 @@ const renderTabContent = (activeTab, accessibilityErrors, errorData, tab) => {
         </ul>
       );
 
-      case 4:
-        return (
-          <ul className='videoerrors'>
-            <VideoCaptionIssue/>
-          </ul>
-        );
+    case 4:
+      return (
+        <ul className='videoerrors'>
+          <VideoCaptionIssue />
+        </ul>
+      );
   }
 };
 
@@ -70,10 +70,10 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
   const [showSubmitLoader, setShowSubmitLoader] = useState(false);
   const [showTabs, setShowTabs] = useState(false);
   const [accessibilityErrors, setAccessibilityErrors] = useState<any>(
-   
+
   );
   const [errorData, setErrorData] = useState(
-   
+
   );
   const [activeTab, setActiveTab] = useState(1);
   const tabs = [
@@ -97,8 +97,8 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
   const handleHostURLChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setHostURL(event.target.value);
   };
-  const handleBack =(e)=> {
-     
+  const handleBack = (e) => {
+
     setCurrentStep(1);
     // Do something when at least one technology is selected and Next button is clicked
   };
@@ -115,7 +115,7 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
       method: "POST",
       body: formData,
     });
-   
+
     const response = await fetch(`${API_URL}/issues?url=${hostURL}`, {
       method: "GET",
     });
@@ -125,15 +125,15 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
 
     await fetch(`${API_URL}/fix_all`, {
       method: "POST",
-  })
+    })
 
     const errorData = await fetch(`${API_URL}/suggest_changes`, {
-        method: "GET"
+      method: "GET"
     })
     const contrastImageErrorData = await errorData.json();
     setErrorData(contrastImageErrorData)
 
-   
+
     setShowSubmitLoader(false);
     setShowTabs(true);
   };
@@ -153,15 +153,59 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
       body: JSON.stringify(errorData),
     });
 
+    setTimeout(() => {
       setShowLoader(false);
       setCurrentStep(3);
+    }, 2000)
+
   };
+
+  const renderCount = (tabId, tab) => {
+    switch (tabId) {
+      case 1: if(accessibilityErrors){
+        return accessibilityErrors
+        ?.filter((error: any) => !tab.excludeError?.includes(error.id))
+        ?.flatMap((error: any) => error.nodes)
+        ?.flatMap((error: any) => error.failureSummary)
+        ?.map((error: any) => (
+          <li>{error?.split("Fix any of the following:")[1]}</li>
+        ))?.length
+      }
+      case 2: if(errorData) {
+        return Object.entries(errorData["img_alt"])
+        .flatMap(([key, val]) => {
+            return val['img-alt']?.map(item => {
+                return {
+                    file: key,
+                    ...item
+                }
+            })
+        }
+        )?.length 
+      } 
+      case 3:
+        if (errorData) {
+          return Object.entries(errorData["color_contrast"])
+            .flatMap(([key, val]) => {
+              return val?.map((item: any) => {
+                return {
+                  ...item,
+                  id: Math.random()
+                }
+              })
+            }
+            )?.length
+        } 
+      case 4: return 1;
+    }
+  }
+
   return (
     <div className="step-two">
       {showLoader && <Loader />}
-      {!showTabs  && (
+      {!showTabs && (
         <div className=" user-input-form">
-           <div className='imgLogo'> <img src={logo} alt="logo" width='180' height='70'/></div>
+          <div className='imgLogo'> <img src={logo} alt="logo" width='180' height='70' /></div>
           <div className="row user-input-row">
             {renderFormInputColumn(
               <><div style={{ position: 'relative' }}>
@@ -177,8 +221,8 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
                     accept=".zip,.rar,.7zip"
                   />
                 </div>
-                <span style={{ position: 'absolute', bottom: -17, right: 0,fontSize:12 }}>*Upload zip folder here</span>
-                </div>
+                <span style={{ position: 'absolute', bottom: -17, right: 0, fontSize: 12 }}>*Upload zip folder here</span>
+              </div>
               </>
             )}
           </div>
@@ -201,17 +245,18 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
           </div>
           <div className="row user-input-row" >
             <div className="col-md-6 upload-file-btn text-end">
-             <a type="link" className="btn" onClick={handleBack} style={{paddingLeft:20,paddingRight:20,marginTop:18,backgroundColor:'white',border:'1px solid white',color:'#fd5f06',
-            //  textDecoration: 'underline #ca5010 1px'
-             }} >
-            Back
+              <a type="link" className="btn" onClick={handleBack} style={{
+                paddingLeft: 20, paddingRight: 20, marginTop: 18, backgroundColor: 'white', border: '1px solid white', color: '#fd5f06',
+                //  textDecoration: 'underline #ca5010 1px'
+              }} >
+                Back
               </a>
-          
-              
 
-              <button type="button" className="btn btn-submit"  
-              
-               onClick={handleSubmit} style={{marginLeft:10,backgroundColor:'#fd5f06',border:'1px solid #fd5f06'}}>
+
+
+              <button type="button" className="btn btn-submit"
+
+                onClick={handleSubmit} style={{ marginLeft: 10, backgroundColor: '#fd5f06', border: '1px solid #fd5f06' }}>
                 Submit
               </button>
             </div>
@@ -219,7 +264,7 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
         </div>
       )}
       <>
-      {showSubmitLoader && <FetchingErrorsLoader/> }
+        {showSubmitLoader && <FetchingErrorsLoader />}
 
         {showTabs && (
           <div>
@@ -228,14 +273,16 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
                 return (
                   <li className="nav-item" key={tab.id}>
                     <a
-                      className={`nav-link${
-                        tab.id === activeTab ? " active" : ""
-                      }`}
+                      className={`nav-link${tab.id === activeTab ? " active" : ""
+                        }`}
                       data-bs-toggle="tab"
                       href={`#${tab.tabIdentifier}`}
                       onClick={() => setActiveTab(tab.id)}
                     >
                       {tab.tabName}
+                      {' '}
+                      <span className="count-badge">{renderCount(tab.id, tab)}</span>
+
                     </a>
                   </li>
                 );
@@ -245,19 +292,18 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
               {tabs.map((tab) => {
                 return (
                   <div
-                    className={`tab-pane container${
-                      tab.id === activeTab ? " active" : " fade"
-                    }`}
+                    className={`tab-pane container${tab.id === activeTab ? " active" : " fade"
+                      }`}
                     key={tab.tabIdentifier}
                     id={tab.tabIdentifier}
                   >
                     {renderTabContent(
-                    
-                    activeTab,
+
+                      activeTab,
                       accessibilityErrors,
                       errorData,
                       tab
-                     
+
                     )}
                   </div>
                 );
@@ -268,16 +314,16 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
       </>
 
       {showTabs && (
-        <div className="buttonDiv"> 
-            <button
-              type="button"
-              className="btn btn-submit"
-              onClick={(event) => {
-                handleFixAll(event);
-              }}
-            >
-              Fix All Issues
-            </button> 
+        <div className="buttonDiv">
+          <button
+            type="button"
+            className="btn btn-submit"
+            onClick={(event) => {
+              handleFixAll(event);
+            }}
+          >
+            Fix All Issues
+          </button>
         </div>
       )}
     </div>
