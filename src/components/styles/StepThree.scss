@@ -12,8 +12,13 @@
 .btn{
     background-color: #fd5f06!important;
 }
-.downloadLink{
+.btn:hover{
+    background-color: #ca5010!important;
+}
+.btn-sm{
+     font-size: 14px!important;
     background-color: #fd5f06!important;    
+    text-align: center;
 }
 
 

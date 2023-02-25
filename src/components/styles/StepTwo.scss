@@ -244,12 +244,17 @@ nav-tabs .nav-item :hover {
         text-align: right;
         // background-color: #fd5f06!important;
     }
+    .btn{
+        background-color: white!important;
+        color: #fd5f06!important;
+    }
     .btn:hover{
         border:1px solid #fd5f06!important ;
         color: #fd5f06!important;
     }
     .btn-submit{
         background-color:#fd5f06!important ;
+        color: white!important;
     }
     .btn-submit:hover{
         background-color:#ca5010!important ;

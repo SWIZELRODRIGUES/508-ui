@@ -34,10 +34,10 @@ function StepThree() {
                     <div className='col'>
                         <button type="button" className="btn" onClick={handleDownload}>
                             Download fixed folder
-                        </button>
-                        <a href="#." className='downloadLink'  onClick={() => window.location.href = '/api/download_log'}>
+                        </button><div><button type="button" className="btn btn-sm" onClick={() => window.location.href = '/api/download_log'}>
                             Download log file
-                        </a>
+                        </button></div>
+                        
                     </div>
                 </div> 
             </div>    
