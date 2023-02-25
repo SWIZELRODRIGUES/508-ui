@@ -70,6 +70,7 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
   const [showTabs, setShowTabs] = useState(false);
   const [accessibilityErrors, setAccessibilityErrors] = useState<any>();
   const [errorData, setErrorData] = useState(
+    { "img_alt": { "angular-demo\\src\\app\\app.component.html": { "img-alt": [{ "sourceline": 12, "selector": "img[src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Arduino_ftdi_chip-1.jpg/1024px-Arduino_ftdi_chip-1.jpg\"]", "old_value": null, "new_value": "Smartphone", "issue": "img tag missing alt attribute" }, { "sourceline": 13, "selector": "img[src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Audion_receiver.jpg/1024px-Audion_receiver.jpg\"]", "old_value": null, "new_value": "Smartphone", "issue": "img tag missing alt attribute" }, { "sourceline": 14, "selector": "img[src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Componentes.JPG/1280px-Componentes.JPG\"]", "old_value": null, "new_value": "Smartphone", "issue": "img tag missing alt attribute" }, { "sourceline": 15, "selector": "img[src=\"https://upload.wikimedia.org/wikipedia/commons/3/32/HitachiJ100A.jpg\"]", "old_value": null, "new_value": "Smartphone", "issue": "img tag missing alt attribute" }] }, "angular-demo\\src\\index.html": { "img-alt": [] } }, "color_contrast": { "angular-demo\\src\\app\\app.component.css": [{ "selector": "button", "current_colors": { "color": "#f0f8ff", "background-color": "#8a2be2" }, "suggested_colors": { "color": "#ffffff", "background-color": "#000000" } }, { "selector": ".navbar", "current_colors": { "color": "#f5f5dc", "background-color": "#00008b" }, "suggested_colors": { "color": "#ffffff", "background-color": "#000000" } }, { "selector": "#brand", "current_colors": { "color": "#a52a2a", "background-color": "#7fffd4" }, "suggested_colors": { "color": "#ffffff", "background-color": "#000000" } }], "angular-demo\\src\\styles.css": [] } }
   );
   const [activeTab, setActiveTab] = useState(1);
   const tabs = [
@@ -101,27 +102,27 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
     setShowTabs(false);
     const formData = new FormData();
     formData.append("files", sourceFolder || "");
-    await fetch(`${API_URL}/upload_zip`, {
-      method: "POST",
-      body: formData,
-    });
+    // await fetch(`${API_URL}/upload_zip`, {
+    //   method: "POST",
+    //   body: formData,
+    // });
 
-    const response = await fetch(`${API_URL}/issues?url=${hostURL}`, {
-      method: "GET",
-    });
-    const data = await response.json();
-    // Set the accessibility errors and their categories in the state
-    setAccessibilityErrors(data);
+    // const response = await fetch(`${API_URL}/issues?url=${hostURL}`, {
+    //   method: "GET",
+    // });
+    // const data = await response.json();
+    // // Set the accessibility errors and their categories in the state
+    // setAccessibilityErrors(data);
 
-    const errorData = await fetch(`${API_URL}/suggest_changes`, {
-        method: "GET"
-    })
-    const contrastImageErrorData = await errorData.json();
-    setErrorData(contrastImageErrorData)
+    // const errorData = await fetch(`${API_URL}/suggest_changes`, {
+    //     method: "GET"
+    // })
+    // const contrastImageErrorData = await errorData.json();
+    // setErrorData(contrastImageErrorData)
 
-    await fetch(`${API_URL}/fix_all`, {
-        method: "POST",
-    })
+    // await fetch(`${API_URL}/fix_all`, {
+    //     method: "POST",
+    // })
     setShowSubmitLoader(false);
     setShowTabs(true);
   };
@@ -132,14 +133,14 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
     event.preventDefault();
     setShowLoader(true);
 
-    await fetch(`${API_URL}/update_changes`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(errorData),
-    });
+    // await fetch(`${API_URL}/update_changes`, {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json, text/plain, */*",
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(errorData),
+    // });
 
     setTimeout(() => {
       setShowLoader(false);

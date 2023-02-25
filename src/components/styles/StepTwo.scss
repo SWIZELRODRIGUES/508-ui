@@ -86,17 +86,19 @@
 
     .user-input-row {
         justify-content: center;
-        .form-group{
-            margin-top:2rem;
+
+        .form-group {
+            margin-top: 2rem;
         }
     }
 
-    .imgLogo{
+    .imgLogo {
         text-align: center;
     }
-    .Fivelogo{
-        width:150px;
-        
+
+    .Fivelogo {
+        width: 150px;
+
     }
 
     .error-tab-content {
@@ -105,9 +107,10 @@
         min-height: 10rem;
         padding-right: 2rem;
         transition: visibility 0s, opacity 0.5s linear;
-        border: 1px solid #dee2e6; border-top: none;
+        border: 1px solid #dee2e6;
+        border-top: none;
         height: 400px;
-        overflow-y:auto ;
+        overflow-y: auto;
     }
 
     .color-picker-row {
@@ -117,6 +120,16 @@
         border-radius: 0.5rem;
         display: flex;
         align-items: center;
+
+        .contrast-check {
+           display: flex;
+           align-items: center;
+
+            svg {
+                fill: green;
+                margin-right: 0.5rem;
+            }
+        }
     }
 
     .alt-image {
@@ -128,10 +141,23 @@
         padding: 0.5rem;
     }
 
-    .ImageRenderAlt{ padding-left: 0;}
-    .img-alt-issue-div .row img{ width: 20%;}
-    .ImageRenderAlt label.form-label{  font-size: 13px;}
-    .colorText{ font-size: 12px;  display: inline-block; padding-left: 5px;}
+    .ImageRenderAlt {
+        padding-left: 0;
+    }
+
+    .img-alt-issue-div .row img {
+        width: 20%;
+    }
+
+    .ImageRenderAlt label.form-label {
+        font-size: 13px;
+    }
+
+    .colorText {
+        font-size: 12px;
+        display: inline-block;
+        padding-left: 5px;
+    }
 
     .current-color-box {
         width: 2rem;
@@ -147,14 +173,16 @@
         margin-top: 0.4rem;
     }
 
-    .image-alt-input{
-     margin-top: 1rem;
-    background-color: white;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
+    .image-alt-input {
+        margin-top: 1rem;
+        background-color: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
     }
 
-    .buttonDiv{ text-align: right;}
+    .buttonDiv {
+        text-align: right;
+    }
 }
