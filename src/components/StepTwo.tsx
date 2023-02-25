@@ -114,15 +114,17 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
     // Set the accessibility errors and their categories in the state
     setAccessibilityErrors(data);
 
-    // const errorData = await fetch(`${API_URL}/suggest_changes`, {
-    //     method: "GET"
-    // })
-    // const contrastImageErrorData = await errorData.json();
-    // setErrorData(contrastImageErrorData)
+    await fetch(`${API_URL}/fix_all`, {
+      method: "POST",
+  })
+  
+    const errorData = await fetch(`${API_URL}/suggest_changes`, {
+        method: "GET"
+    })
+    const contrastImageErrorData = await errorData.json();
+    setErrorData(contrastImageErrorData)
 
-    // await fetch(`${API_URL}/fix_all`, {
-    //     method: "POST",
-    // })
+   
     setShowSubmitLoader(false);
     setShowTabs(true);
   };
