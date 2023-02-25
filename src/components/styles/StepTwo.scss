@@ -109,7 +109,7 @@
         background: transparent;
         padding: 0.5rem;
         min-height: 10rem;
-        padding-right: 2rem;
+        padding-right: 1rem;
         transition: visibility 0s, opacity 0.5s linear;
         border: 1px solid #e0dbdb; 
         border-top: none;
@@ -117,6 +117,14 @@
         overflow-y:auto ;
         background-color: #f1f1f1;
     }
+    ul.errordisplay{ padding-left:1rem;}
+    .noLeft{ padding-left: 0;}
+    .noRight{ padding-right: 0;}
+    .noPadding{ padding-left: 0; padding-right: 0;}
+    .contrast-check{ padding-left: 5px;}
+    .ImageRenderAlt .form-control{ font-size: 13px;}
+    .ImageRenderAlt .form-control#suggestedDesc{ color: #aa0303; }
+
     .nav-tabs .nav-link{
         color:#0b0b0b;
 
@@ -162,12 +170,15 @@ nav-tabs .nav-item :hover {
         align-items: center;
 
         .contrast-check {
-           display: flex;
-           align-items: center;
 
             svg {
                 fill: green;
                 margin-right: 0.5rem;
+            }
+        }
+        .contrast-cross{
+            svg {
+                fill: red;
             }
         }
     }
@@ -181,9 +192,9 @@ nav-tabs .nav-item :hover {
         padding: 0.5rem;
     }
 
-    .ImageRenderAlt {
-        padding-left: 0;
-    }
+    .ImageRenderAlt,  ul.colorerrors {
+        padding-left: 1rem;
+    } 
 
     .img-alt-issue-div .row img {
         width: 20%;
@@ -198,6 +209,9 @@ nav-tabs .nav-item :hover {
         display: inline-block;
         padding-left: 5px;
     }
+
+    .color-picker-row{ padding: 1rem 0.5rem;}
+    .color-picker-row .contrast-check svg {margin-right: 0;}
 
     .current-color-box {
         width: 2rem;

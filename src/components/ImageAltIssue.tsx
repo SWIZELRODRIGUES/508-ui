@@ -19,7 +19,6 @@ function ImageAltIssue({ imageData }: ImageAltIssueProps) {
         return (<></>)
     }
 
-    console.log(imageData)
 
     const formattedImageData = Object.entries(imageData)
         .flatMap(([key, val]) => {
@@ -43,7 +42,6 @@ function ImageAltIssue({ imageData }: ImageAltIssueProps) {
         <div className="img-alt-issue-div">
             {imageData ?
                 formattedImageData?.map((imageDetails) => {
-                    console.log('**', imageDetails)
                     return (
                         <>
                             <div className='row image-alt-input'>
@@ -53,7 +51,7 @@ function ImageAltIssue({ imageData }: ImageAltIssueProps) {
                                     <>
                                         <label className="form-label" htmlFor='suggestedDesc'>Current Description</label>
                                         <input className="form-control" type="text" name="name" id="suggestedDesc"
-                                            value={imageDetails?.old_value || "Not Alt Text"} readOnly />
+                                            value={imageDetails?.old_value || "No Alt Text"} readOnly />
                                     </>
                                 )}
                                 {renderFormInputColumn(

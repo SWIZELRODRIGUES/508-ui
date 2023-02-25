@@ -22,10 +22,12 @@ function StepThree() {
 
         <Tab id="step4" heading="Step 3">
             <>
+            <div className='DownloadPanel'>
                 <div className="row">
                     <div className='col'>
-                        <i className="bi bi-box-arrow-down "></i>
-                        Your fixed folder is ready for download.
+                        <div className='DoneIcon'><i className="bi bi-check-circle-fill"></i></div>
+                       <div className='DonelargeTxt'>Congratulations!</div> 
+                       <div  className='DonesmallTxt'>you have fixed maximum accessibility issues</div>  
                     </div>
                 </div>
                 <div className="row">
@@ -33,16 +35,12 @@ function StepThree() {
                         <button type="button" className="btn" onClick={handleDownload}>
                             Download fixed folder
                         </button>
-                    </div>
-                </div>
-
-                <div className="row">
-                    <div className='col'>
-                        <button type="button" className="btn col" onClick={() => window.location.href = '/api/download_log'}>
+                        <a href="#." className='downloadLink'  onClick={() => window.location.href = '/api/download_log'}>
                             Download log file
-                        </button>
+                        </a>
                     </div>
-                </div>
+                </div> 
+            </div>    
             </>
         </Tab>
     );

@@ -7,7 +7,6 @@ import './styles/StepTwo.scss';
 import Loader from './Loader';
 import FetchingErrorsLoader from './FetchingErrorsLoader';
 import logo from '../assets/508.png';
-import { BounceLoader } from "react-spinners";
 
 
 type StepTwoProps = {
@@ -22,21 +21,12 @@ const renderFormInputColumn = (element: ReactElement) => {
     </div>
   );
 };
-const promise1 = Promise.resolve(3);
-const promise2 = 42;
-const promise3 = new Promise((resolve, reject) => {
-  setTimeout(resolve, 100, "foo");
-});
-
-Promise.all([promise1, promise2, promise3]).then((values) => {
-  console.log(values);
-});
 
 const renderTabContent = (activeTab, accessibilityErrors, errorData, tab) => {
   switch (activeTab) {
     case 1:
       return (
-        <ul >
+        <ul className='errordisplay'>
           {accessibilityErrors
             ?.filter((error: any) => !tab.excludeError?.includes(error.id))
             ?.flatMap((error: any) => error.nodes)
@@ -56,7 +46,7 @@ const renderTabContent = (activeTab, accessibilityErrors, errorData, tab) => {
 
     case 3:
       return (
-        <ul>
+        <ul className='colorerrors'>
           <ColorContrastIssue
             contrastData={errorData ? errorData["color_contrast"] : null}
           />
@@ -71,9 +61,11 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
   const [showLoader, setShowLoader] = useState(false);
   const [showSubmitLoader, setShowSubmitLoader] = useState(false);
   const [showTabs, setShowTabs] = useState(false);
-  const [accessibilityErrors, setAccessibilityErrors] = useState<any>();
+  const [accessibilityErrors, setAccessibilityErrors] = useState<any>(
+   
+  );
   const [errorData, setErrorData] = useState(
-    { "img_alt": { "angular-demo\\src\\app\\app.component.html": { "img-alt": [{ "sourceline": 12, "selector": "img[src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Arduino_ftdi_chip-1.jpg/1024px-Arduino_ftdi_chip-1.jpg\"]", "old_value": null, "new_value": "Smartphone", "issue": "img tag missing alt attribute" }, { "sourceline": 13, "selector": "img[src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Audion_receiver.jpg/1024px-Audion_receiver.jpg\"]", "old_value": null, "new_value": "Smartphone", "issue": "img tag missing alt attribute" }, { "sourceline": 14, "selector": "img[src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Componentes.JPG/1280px-Componentes.JPG\"]", "old_value": null, "new_value": "Smartphone", "issue": "img tag missing alt attribute" }, { "sourceline": 15, "selector": "img[src=\"https://upload.wikimedia.org/wikipedia/commons/3/32/HitachiJ100A.jpg\"]", "old_value": null, "new_value": "Smartphone", "issue": "img tag missing alt attribute" }] }, "angular-demo\\src\\index.html": { "img-alt": [] } }, "color_contrast": { "angular-demo\\src\\app\\app.component.css": [{ "selector": "button", "current_colors": { "color": "#f0f8ff", "background-color": "#8a2be2" }, "suggested_colors": { "color": "#ffffff", "background-color": "#000000" } }, { "selector": ".navbar", "current_colors": { "color": "#f5f5dc", "background-color": "#00008b" }, "suggested_colors": { "color": "#ffffff", "background-color": "#000000" } }, { "selector": "#brand", "current_colors": { "color": "#a52a2a", "background-color": "#7fffd4" }, "suggested_colors": { "color": "#ffffff", "background-color": "#000000" } }], "angular-demo\\src\\styles.css": [] } }
+   
   );
   const [activeTab, setActiveTab] = useState(1);
   const tabs = [
@@ -121,15 +113,17 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
     // Set the accessibility errors and their categories in the state
     setAccessibilityErrors(data);
 
-    // const errorData = await fetch(`${API_URL}/suggest_changes`, {
-    //     method: "GET"
-    // })
-    // const contrastImageErrorData = await errorData.json();
-    // setErrorData(contrastImageErrorData)
+    await fetch(`${API_URL}/fix_all`, {
+      method: "POST",
+  })
 
-    // await fetch(`${API_URL}/fix_all`, {
-    //     method: "POST",
-    // })
+    const errorData = await fetch(`${API_URL}/suggest_changes`, {
+        method: "GET"
+    })
+    const contrastImageErrorData = await errorData.json();
+    setErrorData(contrastImageErrorData)
+
+   
     setShowSubmitLoader(false);
     setShowTabs(true);
   };
@@ -154,7 +148,6 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
       setCurrentStep(3);
     }, 4000);
   };
-console.log("show",showSubmitLoader)
   return (
     <div className="step-two">
       {showLoader && <Loader />}

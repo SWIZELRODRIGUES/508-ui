@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import StepOne from '../../components/StepOne';
 import StepThree from '../../components/StepThree';
 import StepTwo from '../../components/StepTwo';
-import Wizard from '../../components/Wizard';
 import './styles/Home.scss';
 
 function Home() {
@@ -19,10 +18,10 @@ function Home() {
                 <div className="row d-flex justify-content-center">
                     <div >
                         <div className="wizard">
-                            {/* <Wizard setCurrentStep={setCurrentStep} currentStep={currentStep} /> */}
                                 <div className="tab-content" id="main_form">
                                     <>
                                         {stepArr.find(step => step.stepNo === currentStep)?.element}
+                                        
                                     </>
                                 </div>
 
