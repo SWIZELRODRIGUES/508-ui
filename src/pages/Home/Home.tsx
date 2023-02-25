@@ -22,7 +22,8 @@ function Home() {
                             {/* <Wizard setCurrentStep={setCurrentStep} currentStep={currentStep} /> */}
                                 <div className="tab-content" id="main_form">
                                     <>
-                                        {stepArr.find(step => step.stepNo === currentStep)?.element}
+                                    <StepThree/>
+                                        {/* {stepArr.find(step => step.stepNo === currentStep)?.element} */}
                                     </>
                                 </div>
 
