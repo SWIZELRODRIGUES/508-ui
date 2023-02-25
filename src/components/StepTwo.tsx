@@ -201,7 +201,7 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
           </div>
           <div className="row user-input-row" >
             <div className="col-md-6 upload-file-btn text-end">
-             <a type="link" className="btn" onClick={handleBack} style={{paddingLeft:20,paddingRight:20,marginTop:18,backgroundColor:'white',border:'1px solid #fd5f06',color:'#fd5f06',
+             <a type="link" className="btn" onClick={handleBack} style={{paddingLeft:20,paddingRight:20,marginTop:18,backgroundColor:'white',border:'1px solid white',color:'#fd5f06',
             //  textDecoration: 'underline #ca5010 1px'
              }} >
             Back
@@ -271,7 +271,7 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
         <div className="buttonDiv"> 
             <button
               type="button"
-              className="btn"
+              className="btn btn-submit"
               onClick={(event) => {
                 handleFixAll(event);
               }}
