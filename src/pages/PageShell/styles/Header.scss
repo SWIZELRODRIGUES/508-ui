@@ -17,14 +17,20 @@
   // }
   
   .navbar-brand img {
-    margin-right: -4rem;
+    margin-right: 2rem;
   }
   
   .navbar-brand span {
-    font-family:  sans-serif;
+    font-family:  sans-serif; 
     // font-weight: bold;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     margin-left: 10px;
+ 
+    font-size: 20px;
+    // font-weight: bold;
+    letter-spacing: 1.5px;
+    margin-left: 19px;
+
   }
   
   // .navbar-brand {
@@ -43,12 +49,12 @@
   // }
   
   .navbar-inverse {
-    background-color: #fdf8f8 ;
+    background-color: #ffffff ;
     justify-content: right;
     // border-color: #fdfcfc;
   }
   
    .navbar-header {
-     margin-left: 1.2rem;
+     margin-left: 1.1rem;
    }
   
