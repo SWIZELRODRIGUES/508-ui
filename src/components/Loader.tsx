@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+//@ts-ignore
 import { BounceLoader } from 'react-spinners';
 import './styles/Loader.scss'
 

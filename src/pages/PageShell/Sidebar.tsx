@@ -66,7 +66,7 @@ const Sidebar = () => {
           <div style={{ marginTop: '5px' }}>
             <strong>Equal Access</strong>
           </div>
-          <div style={{ marginBottom: '3px' }}></div>
+          <div style={{ marginBottom: '4px' }}></div>
         </CDBSidebarFooter>
       </CDBSidebar>
 

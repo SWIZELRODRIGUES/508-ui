@@ -7,12 +7,17 @@
     border-bottom: 1px solid rgb(130, 127, 127);
     background-color: #f8f7f7;
   }
-  
-  
+  .sidebar-menu-item{ 
+    margin: 0!important;
+  border-left: 3px solid #fff;}
+
   .sidebar-menu-item:hover {
     background-color: #f1f1f1;
     color: #ca5010;
-    border-left: 2.5px solid #ca5010;
+    border-left:3px solid #ca5010;
+    width: 100%;
+    
+    
   }
   
   .sidebar-menu-item.activeClicked,
