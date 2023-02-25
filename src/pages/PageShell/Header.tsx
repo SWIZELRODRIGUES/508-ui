@@ -8,7 +8,7 @@ function Header() {
        <div className="container-fluid">
         <div className="navbar-header">
           <a className="navbar-brand" href="#">
-            <img src={log} alt="Logo" width='35' height='35' style={{marginRight:12,marginLeft:-12}}/>
+            <img src={log} alt="Logo" width='45' height='45' style={{marginRight:12,marginLeft:-12}}/>
             <span ></span>
             {/* <span ></span>
             <span ></span> */}

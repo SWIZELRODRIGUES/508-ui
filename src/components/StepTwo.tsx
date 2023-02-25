@@ -200,9 +200,10 @@ console.log("show",showSubmitLoader)
           </div>
           <div className="row user-input-row" >
             <div className="col-md-6 upload-file-btn text-end">
-            <button type="button" className="btn " onClick={handleBack} style={{paddingLeft:20,paddingRight:20}} >
+             <a type="link" class="btn btn-secondary" onClick={handleBack} style={{paddingLeft:20,paddingRight:20,marginTop:18,backgroundColor:'white',border:'none',color:'#ca5010',textDecoration: 'underline #ca5010 1px'}} >
             Back
-              </button>
+              </a>
+          
               
 
               <button type="button" className="btn" onClick={handleSubmit} style={{marginLeft:10}}>
