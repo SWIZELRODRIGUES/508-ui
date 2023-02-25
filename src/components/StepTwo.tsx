@@ -33,13 +33,13 @@ const renderTabContent = (activeTab, accessibilityErrors, errorData, tab) => {
   switch (activeTab) {
     case 1:
       return (
-        <ul>
+        <ul >
           {accessibilityErrors
             ?.filter((error: any) => !tab.excludeError?.includes(error.id))
             ?.flatMap((error: any) => error.nodes)
             ?.flatMap((error: any) => error.failureSummary)
             ?.map((error: any) => (
-              <li>{error?.split("Fix any of the following:")[1]}</li>
+              <li className='list'>{error?.split("Fix any of the following:")[1]}</li>
             ))}
         </ul>
       );
@@ -230,10 +230,12 @@ console.log("show",showSubmitLoader)
                     id={tab.tabIdentifier}
                   >
                     {renderTabContent(
-                      activeTab,
+                    
+                    activeTab,
                       accessibilityErrors,
                       errorData,
                       tab
+                     
                     )}
                   </div>
                 );
