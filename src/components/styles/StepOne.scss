@@ -1,14 +1,15 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:200);
 
 .container{
-  max-width: 500px; /* set a maximum width */
+  max-width: 400px; /* set a maximum width */
   // border: #ca5010; /* add a border */
   padding: 0px;
   margin: 10px;
 }
 
 .SectionDiv{
-  body{ background-color: antiquewhite;}
+  body{ background-color: antiquewhite;
+  max-width: 80%;}
   // .SectionDiv{ width: 800px;}
   .cartPanel{  width: 150px;
      height:120px; float: left; margin-right: 15px;

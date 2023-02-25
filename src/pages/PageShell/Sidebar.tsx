@@ -25,7 +25,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div style={{ position: 'fixed', top: -43, left: 0, bottom: 0, zIndex: 9 ,paddingBottom:0}}>
+    <div style={{ position: 'fixed', top: -43, left: 0, bottom: 0, zIndex: 3 ,paddingBottom:0}}>
       <CDBSidebar className='sidebar-wrapper' textColor="#323130" backgroundColor="#fff" isOpen={isSidebarOpen}>
         <CDBSidebarHeader className="sidebar-header">
        <div></div>

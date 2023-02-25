@@ -6,6 +6,7 @@ import ImageAltIssue from './ImageAltIssue';
 import './styles/StepTwo.scss'
 import Loader from './Loader';
 import { BounceLoader } from 'react-spinners';
+import log from '../assets/508.png'
 
 
 type StepTwoProps = {
@@ -131,11 +132,15 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
     };
 
     return (
+
         <div className='step-two'>
+
             {showLoader &&
                 <Loader />}
             {!showTabs && <div className=" user-input-form">
+            <div className='imgLogo'><img className='Fivelogo' src={log} alt="Logo" /></div>
                 <div className='row user-input-row'>
+                
                     {renderFormInputColumn(
                         <>
                             <label htmlFor="formFile" className="form-label">Upload your project folder</label>
@@ -207,6 +212,7 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
             </ul>
             }
         </div >
+    
     );
 }
 

@@ -38,7 +38,7 @@ function StepOne({ setCurrentStep }: StepOneProps) {
 
   const isSelected = (techName: string) => selected.includes(techName);
   return (
-    <div className="SectionDiv">
+    <div className="SectionDiv" >
       <div>
         <h2>Let's get started with your project</h2>
       </div>
