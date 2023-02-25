@@ -1,13 +1,18 @@
 .sidebar-wrapper {
-    border: 1px solid #ccc;
+    border: 1px solid rgb(198, 195, 195);
+  
   }
-  /* .sidebar-header{
-    border: 2px solid grey;
-  } */
+   .sidebar-header{
+  
+    border-bottom: 1px solid rgb(130, 127, 127);
+    background-color: #f8f7f7;
+  }
+  
   
   .sidebar-menu-item:hover {
     background-color: #f1f1f1;
     color: #ca5010;
+    border-left: 2.5px solid #ca5010;
   }
   
   .sidebar-menu-item.activeClicked,

@@ -25,14 +25,13 @@ const Sidebar = () => {
   };
 
   return (
-    <div style={{ position: 'fixed', top: -30, left: 0, bottom: 0, zIndex: 999 }}>
+    <div style={{ position: 'fixed', top: -43, left: 0, bottom: 0, zIndex: 9 ,paddingBottom:0}}>
       <CDBSidebar className='sidebar-wrapper' textColor="#323130" backgroundColor="#fff" isOpen={isSidebarOpen}>
         <CDBSidebarHeader className="sidebar-header">
-       
-        <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}>
-        <img src={log} alt="Logo" width="50" height="40" />
+       <div></div>
+        <a href="/" className="text-decoration-none" style={{ color: 'inherit' }}><div><img src={log} alt="Logo" width="fit-content" height="fit-content"  /></div>
+        
   
-  FiveO8
 </a>
 {/* <img src="C:\Users\kevin_peter\Documents\semicolon\508-ui\src\assets\508.png" alt="Icon" style={{ width: '200px', height: '200px', marginRight: '16px' }} onClick={toggleSidebar} /> */}
         </CDBSidebarHeader>
@@ -40,7 +39,7 @@ const Sidebar = () => {
         <CDBSidebarContent className="sidebar-content">
           <CDBSidebarMenu>
             <NavLink exact to="/" activeClassName="activeClicked">
-              <CDBSidebarMenuItem className="sidebar-menu-item" icon="columns" selected={selected === 0} onClick={() => handleSelect(0)} >Home</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem className="sidebar-menu-item" icon="home" selected={selected === 0} onClick={() => handleSelect(0)} >Home</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/tables" activeClassName="activeClicked">
               <CDBSidebarMenuItem className="sidebar-menu-item" icon="table" selected={selected === 1} onClick={() => handleSelect(1)}>My Previous Runs</CDBSidebarMenuItem>
@@ -59,7 +58,8 @@ const Sidebar = () => {
             </NavLink>
           </CDBSidebarMenu>
         </CDBSidebarContent>
-        <CDBSidebarFooter style={{ textAlign: 'center', fontSize: '1.1rem' }}>
+        <div className='border'></div>
+        <CDBSidebarFooter style={{ textAlign: 'center', fontSize: '1.1rem',paddingTop:25,paddingBottom:20 }}>
           <div style={{ padding: '4px 4px' }}>
             <em style={selected === 4 ? { borderBottom: '1px solid #fff' } : null}>"Accessibility is not a feature,<br/>it is a human right."</em>
           </div>

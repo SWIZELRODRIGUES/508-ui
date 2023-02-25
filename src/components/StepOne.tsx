@@ -43,7 +43,7 @@ function StepOne({ setCurrentStep }: StepOneProps) {
         <h2>Let's get started with your project</h2>
       </div>
       <h4>Please select the Technology used?</h4>
-      <div style={{padding:20}}></div>
+      <div style={{padding:10}}></div>
       <form>
         <div
           className={`cartPanel ${isSelected( 'Angular Js') ? 'selected' : ''}`}

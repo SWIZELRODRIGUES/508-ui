@@ -3,7 +3,7 @@
 .container{
   max-width: 800px; /* set a maximum width */
   // border: #ca5010; /* add a border */
-  padding: 2px;
+  padding: 0px;
   margin: 10px;
 }
 
@@ -13,7 +13,7 @@
   .cartPanel{  width: 150px;
      height:120px; float: left; margin-right: 15px;
       margin-bottom: 25px; border-radius: 10px; 
-      background-color: white; padding:13px; 
+      background-color: white; padding:12px; 
       text-align: center;}
   .cartPanel:hover{ background-color:#E4E4E5; cursor: pointer;} 
 }
@@ -38,7 +38,7 @@
   background-color: white;
   padding: 10px;
   text-align: center;
-  transition: all 0.3s ease-in-out; /* add transition property */
+  transition: all 0.2s ease-in-out; /* add transition property */
   border:1px solid grey;
 }
 
