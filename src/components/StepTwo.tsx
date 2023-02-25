@@ -6,7 +6,9 @@ import ImageAltIssue from './ImageAltIssue';
 import './styles/StepTwo.scss'
 import Loader from './Loader';
 import FetchingErrorsLoader from './FetchingErrorsLoader';
+import logo from '../assets/508.png';
 import { BounceLoader } from "react-spinners";
+
 
 type StepTwoProps = {
   setCurrentStep: Function;
@@ -39,7 +41,7 @@ const renderTabContent = (activeTab, accessibilityErrors, errorData, tab) => {
             ?.flatMap((error: any) => error.nodes)
             ?.flatMap((error: any) => error.failureSummary)
             ?.map((error: any) => (
-              <li className='list'>{error?.split("Fix any of the following:")[1]}</li>
+              <li>{error?.split("Fix any of the following:")[1]}</li>
             ))}
         </ul>
       );
@@ -152,6 +154,7 @@ console.log("show",showSubmitLoader)
       {showLoader && <Loader />}
       {!showTabs && !showSubmitLoader && (
         <div className=" user-input-form">
+           <div className='imgLogo'> <img src={logo} alt="logo" width='150' height='65'/></div>
           <div className="row user-input-row">
             {renderFormInputColumn(
               <>
@@ -188,7 +191,7 @@ console.log("show",showSubmitLoader)
             )}
           </div>
           <div className="row user-input-row">
-            <div className="col-md-6 upload-file-btn">
+            <div className="col-md-6 upload-file-btn text-end">
               <button type="button" className="btn" onClick={handleSubmit}>
                 Submit
               </button>
