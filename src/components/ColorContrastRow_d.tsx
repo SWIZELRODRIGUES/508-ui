@@ -13,8 +13,8 @@ type ColorContrastRowProps = {
 function ColorContrastRow(
     { handleColorChange, handleBackgroundColorChange, contrastDetails }
         : ColorContrastRowProps) {
-    const [foreground, setForeground] = useState(contrastDetails['suggested_colors']['color'])
-    const [background, setBackground] = useState(contrastDetails['suggested_colors']['background-color'])
+    const [foreground, setForeground] = useState('#f4f4f4')
+    const [background, setBackground] = useState('#f4f4f4')
 
     const yellow = ColorContrastCalc.colorFrom(foreground);
     const black = ColorContrastCalc.colorFrom(background);
@@ -26,53 +26,43 @@ function ColorContrastRow(
                 {contrastDetails?.selector}
             </div>
             <div className='col-md-4'>
-                <div className='current-color-box'
+                Current Font Color
+                <div
+                    className='current-color-box'
                     style={{ backgroundColor: contrastDetails['current_colors']['color'] }} />
-
-                <div className="colorText">Current Font Color</div>
-                <br/>
-                
+                Suggested Font Color
                 <div
                     id={`${contrastDetails?.id}-foreground`}
                     className='current-color-box'
-                    style={{ backgroundColor: contrastDetails['suggested_colors']['color'] }} /> 
-
-                <div className="colorText">Suggested Font Color</div> 
-                <br/>
-                
+                    style={{ backgroundColor: contrastDetails['suggested_colors']['color'] }} />
                 <HuePicker
-                width="200px"
                     color={contrastDetails['suggested_colors']['color']}
                     onChange={(color: any) => {
                         setForeground(color.hex)
                         handleColorChange(contrastDetails?.id, color.hex)
                     }
                     } />
-                
             </div>
-            <div className='col-md-4'> 
+            <div className='col-md-4'>
+                Current Background Color
                 <div
                     className='current-color-box'
                     style={{ backgroundColor: contrastDetails['current_colors']['background-color'] }} />
-                
-                <div className="colorText">Current Background Color</div>
-                <br/>
-
+                Suggested Background Color
                 <div
                     id={`${contrastDetails?.id}-background`}
                     className='current-color-box'
                     style={{ backgroundColor: contrastDetails['suggested_colors']['background-color'] }} />
-                    <div className="colorText">Suggested Background Color</div>
-                    <br/>
-                <HuePicker  width="200px"
+                <HuePicker
                     color={contrastDetails['suggested_colors']['background-color']}
                     onChange={(color: any) => {
                         setBackground(color.hex)
                         handleBackgroundColorChange(contrastDetails?.id, color.hex)
                     }} />
             </div>
-            <div className='col-md-3'>
-            <span className="colorText">Contrast ratio: &nbsp;</span>
+            <div className='col-md-2'>
+                Contrast ratio
+                <br />
                 {contrast?.toFixed(2)}
             </div>
         </>

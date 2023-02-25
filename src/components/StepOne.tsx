@@ -38,12 +38,12 @@ function StepOne({ setCurrentStep }: StepOneProps) {
 
   const isSelected = (techName: string) => selected.includes(techName);
   return (
-    <div className="SectionDiv">
-      <div>
+    <div className="SectionDiv" >
+      <div style={{padding:15}}>
         <h2>Let's get started with your project</h2>
       </div>
-      <h4>Please select the Technology used?</h4>
-      <div style={{ padding: 20 }}></div>
+      <h4>Please select the Technology used</h4>
+      <div style={{ padding: 3 }}></div>
       <form>
         <div className='row'>
           <div
