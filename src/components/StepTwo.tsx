@@ -7,6 +7,7 @@ import './styles/StepTwo.scss';
 import Loader from './Loader';
 import FetchingErrorsLoader from './FetchingErrorsLoader';
 import logo from '../assets/508.png';
+import VideoCaptionIssue from './VideoCaptionIssue';
 
 
 type StepTwoProps = {
@@ -52,6 +53,13 @@ const renderTabContent = (activeTab, accessibilityErrors, errorData, tab) => {
           />
         </ul>
       );
+
+      case 4:
+        return (
+          <ul className='videoerrors'>
+            <VideoCaptionIssue/>
+          </ul>
+        );
   }
 };
 
@@ -77,6 +85,8 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
     },
     { id: 2, tabName: "Image Issues", tabIdentifier: "alt" },
     { id: 3, tabName: "Color Contrast Issues", tabIdentifier: "color" },
+    { id: 4, tabName: "Video Issues", tabIdentifier: "video" },
+
   ];
   const handleSourceFolderUpload = (
     event: React.ChangeEvent<HTMLInputElement>
