@@ -37,6 +37,7 @@ function ColorContrastIssue({ contrastData }: ColorContrastIssueProps) {
 
     return (
         <div >
+            <i class="bi bi-info-circle"></i> WCAG 2.0 level AA requires a contrast ratio of at least 4.5:1 for normal text
             {formattedContrastData?.map((contrastDetails) => {
                 return (
                     <div className='row color-picker-row' key={contrastDetails?.id}>

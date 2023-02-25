@@ -12,10 +12,10 @@ function FetchingErrorsLoader() {
         if (progressCounter < stepProgressArr.length - 1) {
             setProgressCounter(progressCounter + 1)
         }
-        if(progress < 10){
+        if(progress < 9){
             setProgress(progress +1)
         }
-    }, 2000)
+    }, 4000)
 
     return (
         <div className="loader-container">

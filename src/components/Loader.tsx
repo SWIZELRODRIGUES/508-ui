@@ -24,8 +24,6 @@ function Loader() {
             <div className="fetching-loader-container">
                 <ClipLoader color="#0d6efd" size={75} speedMultiplier={0.5} className={"loader-circle"} />
                 <div className="error-loader-percentage"> {10 * progress + '%'}</div>
-
-                <br />
                 <div className="error-status">
                     <div className='loader-text'>{stepProgressArr[progressCounter]}</div>
                 </div>
