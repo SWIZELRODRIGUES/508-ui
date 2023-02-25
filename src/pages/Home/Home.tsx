@@ -23,7 +23,6 @@ function Home() {
                                 <div className="tab-content" id="main_form">
                                     <>
                                         {stepArr.find(step => step.stepNo === currentStep)?.element}
-                                        <div className="clearfix"></div>
                                     </>
                                 </div>
 

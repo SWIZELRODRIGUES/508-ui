@@ -43,35 +43,38 @@ function StepOne({ setCurrentStep }: StepOneProps) {
         <h2>Let's get started with your project</h2>
       </div>
       <h4>Please select the Technology used?</h4>
-      <div style={{padding:20}}></div>
+      <div style={{ padding: 20 }}></div>
       <form>
-        <div
-          className={`cartPanel ${isSelected( 'Angular Js') ? 'selected' : ''}`}
-          onClick={() => handleSelect('Angular Js')}
-        >
-          <div className="techLogo">
-            <img src={angularIcon} alt="Angular Logo" />
+        <div className='row'>
+          <div
+            className={`cartPanel ${isSelected('Angular Js') ? 'selected' : ''}`}
+            onClick={() => handleSelect('Angular Js')}
+          >
+            <div className="techLogo">
+              <img src={angularIcon} alt="Angular Logo" />
+            </div>
+            <div className="techName">Angular Js</div>
           </div>
-          <div className="techName">Angular Js</div>
-        </div>
-        <div
-          className={`cartPanel ${isSelected ( 'PHP') ? 'selected' : ''}`}
-          onClick={() => handleSelect('PHP')}
-        >
-          <div className="techLogo">
-            <img src={phpIcon} alt="PHP Logo" />
+          <div
+            className={`cartPanel ${isSelected('PHP') ? 'selected' : ''}`}
+            onClick={() => handleSelect('PHP')}
+          >
+            <div className="techLogo">
+              <img src={phpIcon} alt="PHP Logo" />
+            </div>
+            <div className="techName">PHP</div>
           </div>
-          <div className="techName">PHP</div>
-        </div>
-        <div
-          className={`cartPanel ${isSelected('HTML/CSS') ? 'selected' : ''}`}
-          onClick={() => handleSelect('HTML/CSS')}
-        >
-          <div className="techLogo">
-            <img src={htmlIcon} alt="HTML Logo" />
+          <div
+            className={`cartPanel ${isSelected('HTML/CSS') ? 'selected' : ''}`}
+            onClick={() => handleSelect('HTML/CSS')}
+          >
+            <div className="techLogo">
+              <img src={htmlIcon} alt="HTML Logo" />
+            </div>
+            <div className="techName">HTML/CSS</div>
           </div>
-          <div className="techName">HTML/CSS</div>
         </div>
+        <div className='row'>
         <div
           className={`cartPanel ${isSelected('React Js') ? 'selected' : ''}`}
           onClick={() => handleSelect('React Js')}
@@ -98,6 +101,7 @@ function StepOne({ setCurrentStep }: StepOneProps) {
             <img src={vueIcon} alt="Vue Logo" />
           </div>
           <div className="techName">Vue JS</div>
+        </div>
         </div>
       </form>
       <button onClick={handleNext} className="my-btn" >Next</button>

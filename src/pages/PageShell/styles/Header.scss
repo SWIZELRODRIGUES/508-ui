@@ -1,15 +1,13 @@
 .navbar {
     border-radius: 0;
     color: rgb(26, 25, 25);
-    position: fixed;
-    top: 0;
     left: 0;
     right: 0;
     z-index: 9999;
     background-color: #f1f1f1;
     border-bottom:0.5px solid rgb(169, 167, 167);
-    position: fixed;
-    top: 0%;
+    padding: 1rem;
+    position: sticky; top: 0;
   }
 
   // .navbar-brand {
@@ -17,9 +15,9 @@
   //   align-items: center;
   // }
   
-  // .navbar-brand img {
-  //   margin-right: 10px;
-  // }
+  .navbar-brand img {
+    margin-right: -4rem;
+  }
   
   // .navbar-brand span {
   //   font-family:  sans-serif;
