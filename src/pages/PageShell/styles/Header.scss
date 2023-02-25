@@ -1,32 +1,15 @@
 .navbar {
     border-radius: 0;
     color: rgb(26, 25, 25);
-    position: fixed;
-    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 33;
     background-color: #393131;
     border-bottom:0.5px solid rgb(169, 167, 167);
-    position: fixed;
-    
-      // display: flex;
-      // justify-content: space-between;
-}
-    
-    // .navbar li {
-    //   border-right: 1px solid #ccc;
-    //   padding: 0 10px;
-    // }
-    
-    // .navbar li:last-child {
-    //   border-right: none;
-    // }
-    
-    // top: 0%;
-    // padding-bottom: 333;
-  
+    padding: 1rem;
+    position: sticky; top: 0;
+  }
 
   // .navbar-brand {
   //   display: flex;
@@ -34,9 +17,7 @@
   // }
   
   .navbar-brand img {
-    margin-right: 0px;
-     width: fit-content;
-     height: fit-content;
+    margin-right: -4rem;
   }
   
   .navbar-brand span {

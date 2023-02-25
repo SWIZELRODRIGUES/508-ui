@@ -4,25 +4,25 @@
 //     justify-content: center;
 //     align-items: center;
 //     height: 100vh; 
-  
+
 //   form {
 //     display: flex;
 //     flex-direction: column;
 //     align-items: center;
 //     margin-bottom: 20px;
 //   }
-  
+
 //   form > div {  
 //     display: flex;
 //     flex-direction: column;
 //     margin-bottom: 10px;  
 //   }
-    
+
 //   form label {
 //     font-weight: bold;
 //     margin-bottom: 5px;
 //   }
-  
+
 //   form input[type="file"],  
 //   form input[type="text"] {
 //     border: 1px solid #ccc;
@@ -30,7 +30,7 @@
 //     padding: 5px;
 //     width: 300px;
 //   }
-  
+
 //   form button[type="submit"] {
 //    background-color: #4CAF50;
 //     color: white; 
@@ -44,57 +44,96 @@
 //   form button[type="submit"]:hover {
 //     background-color: #45a049;
 //   }  
-  
+
 //   h2 {
 //     margin-bottom: 10px;
 //   }
-  
+
 //   .tab-content { 
 //     width: 500px; 
 //     border: 1px solid #ccc;  
 //     border-top: none; 
 //     padding: 20px;
 //   }
-   
+
 //   .nav-link {
 //     color: #007bff;
 //   }
-    
+
 //   .nav-link.active {
 //     font-weight: bold;
 //   }
-  
+
 //   .tab-pane p {
 //     margin-bottom: 10px;
 //   }
-  
-// }
-.step-two{ 
 
-    button{
-    margin-top: 2rem;
-}
-.user-input-form{
-    margin-bottom: 2rem;
-}
-.error-tab-content{
-    background: #cfe2ff ;
-    padding:0.5rem;
-    min-height: 10rem;
-}
-.color-picker-row{
-    margin-top:1rem;
+// }
+.step-two {
+
+    button {
+        margin-top: 2rem;
+    }
+
+    .user-input-form {
+        margin-bottom: 2rem;
+        // .form-group{
+        //     margin-top: 2rem;
+        // }
+
+
+    }
+
+    .user-input-row {
+        justify-content: center;
+        .form-group{
+            margin-top:2rem;
+        }
+    }
+
+    .error-tab-content {
+        background: #efefef;;
+        padding: 0.5rem;
+        min-height: 10rem;
+        padding-right: 2rem;
+        transition: visibility 0s, opacity 0.5s linear;
+    }
+
+    .color-picker-row {
+        margin-top: 1rem;
+        background-color: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+    }
+
+    .alt-image {
+        width: 15rem;
+    }
+
+    .img-alt-issue-div .row {
+        align-items: center;
+        padding: 0.5rem;
+    }
+
+    .current-color-box {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        border: solid 0.05rem lightgrey;
+    }
+
+    .hue-picker {
+        margin-top: 0.4rem;
+    }
+
+    .image-alt-input{
+        margin-top: 1rem;
     background-color: white;
     padding: 1rem;
     border-radius: 0.5rem;
     display: flex;
     align-items: center;
-}
-.alt-image{
-    width: 15rem;
-}
-.img-alt-issue-div .row{
-    align-items:center;
-    padding:0.5rem;
-}
+    }
 }

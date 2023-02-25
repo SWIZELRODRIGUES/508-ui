@@ -29,7 +29,7 @@ function StepThree() {
                 </div>
                 <div className="row">
                     <div className='col'>
-                        <button type="button" className="btn btn-primary " onClick={handleDownload}>
+                        <button type="button" className="btn" onClick={handleDownload}>
                             Download fixed folder
                         </button>
                     </div>
@@ -37,7 +37,7 @@ function StepThree() {
 
                 <div className="row">
                     <div className='col'>
-                        <button type="button" className="btn btn-primary col" onClick={() => window.location.href = '/api/download_log'}>
+                        <button type="button" className="btn col" onClick={() => window.location.href = '/api/download_log'}>
                             Download log file
                         </button>
                     </div>

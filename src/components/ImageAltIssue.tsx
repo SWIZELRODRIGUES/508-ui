@@ -46,7 +46,7 @@ function ImageAltIssue({ imageData }: ImageAltIssueProps) {
                     console.log('**', imageDetails)
                     return (
                         <>
-                            <div className='row'>
+                            <div className='row image-alt-input'>
                                 <img className="alt-image" src={imageDetails?.selector?.split('"')[1]} alt={imageDetails?.new_value} />
 
                                 {renderFormInputColumn(
