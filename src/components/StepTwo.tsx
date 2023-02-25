@@ -3,7 +3,7 @@ import React, { ReactElement, useState } from 'react';
 import { API_URL } from '../constant';
 import ColorContrastIssue from './ColorContrastIssue';
 import ImageAltIssue from './ImageAltIssue';
-import './styles/StepTwo.scss'
+import './styles/StepTwo.scss';
 import Loader from './Loader';
 import FetchingErrorsLoader from './FetchingErrorsLoader';
 import logo from '../assets/508.png';
@@ -13,6 +13,7 @@ import { BounceLoader } from "react-spinners";
 type StepTwoProps = {
   setCurrentStep: Function;
 };
+
 
 const renderFormInputColumn = (element: ReactElement) => {
   return (
@@ -93,7 +94,11 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
   const handleHostURLChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setHostURL(event.target.value);
   };
-
+  const handleBack =(e)=> {
+     
+    setCurrentStep(1);
+    // Do something when at least one technology is selected and Next button is clicked
+  };
   const handleSubmit = async (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
@@ -107,7 +112,7 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
       method: "POST",
       body: formData,
     });
-
+   
     const response = await fetch(`${API_URL}/issues?url=${hostURL}`, {
       method: "GET",
     });
@@ -154,10 +159,10 @@ console.log("show",showSubmitLoader)
       {showLoader && <Loader />}
       {!showTabs && !showSubmitLoader && (
         <div className=" user-input-form">
-           <div className='imgLogo'> <img src={logo} alt="logo" width='150' height='65'/></div>
+           <div className='imgLogo'> <img src={logo} alt="logo" width='180' height='70'/></div>
           <div className="row user-input-row">
             {renderFormInputColumn(
-              <>
+              <><div style={{ position: 'relative' }}>
                 <label htmlFor="formFile" className="form-label">
                   Upload your project folder
                 </label>
@@ -169,6 +174,8 @@ console.log("show",showSubmitLoader)
                     onChange={handleSourceFolderUpload}
                     accept=".zip,.rar,.7zip"
                   />
+                </div>
+                <span style={{ position: 'absolute', bottom: -17, right: 0,fontSize:12 }}>*Upload zip folder here</span>
                 </div>
               </>
             )}
@@ -190,9 +197,14 @@ console.log("show",showSubmitLoader)
               </>
             )}
           </div>
-          <div className="row user-input-row">
+          <div className="row user-input-row" >
             <div className="col-md-6 upload-file-btn text-end">
-              <button type="button" className="btn" onClick={handleSubmit}>
+            <button type="button" className="btn " onClick={handleBack} style={{paddingLeft:20,paddingRight:20}} >
+            Back
+              </button>
+              
+
+              <button type="button" className="btn" onClick={handleSubmit} style={{marginLeft:10}}>
                 Submit
               </button>
             </div>

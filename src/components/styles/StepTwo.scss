@@ -70,14 +70,16 @@
 
 // }
 
-.step-two {
+.step-two { 
+    margin-top: 40px;
 
     button {
-        margin-top: 2rem;
+        margin-top: 1rem;
     }
 
     .user-input-form {
         margin-bottom: 2rem;
+       
         // .form-group{
         //     margin-top: 2rem;
         // }
@@ -87,6 +89,7 @@
 
     .user-input-row {
         justify-content: center;
+       margin-bottom: 0.2rem;
 
         .form-group {
             margin-top: 2rem;
