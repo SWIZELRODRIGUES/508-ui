@@ -13,8 +13,8 @@
 
   .sidebar-menu-item:hover {
     background-color: #f1f1f1;
-    color: #ca5010;
-    border-left:3px solid #ca5010;
+    color: #fd5f06;
+    border-left:3px solid #fd5f06;
     width: 100%;
     
     
@@ -23,7 +23,7 @@
   .sidebar-menu-item.activeClicked,
   .sidebar-menu-item.activeClicked:hover {
     background-color: #f1f1f1;
-    color: #ca5010;
+    color: #fd5f06;
   }
   /* .borderOne{
     position: relative;

@@ -134,7 +134,7 @@
 color:#fcfbfa;
 
 background-color: #f1f1f1;
-color:#ca5010;
+color:#fd5f06;
 border: 1px solid#e0dbdb; 
 border-bottom: none;
   }
@@ -153,7 +153,7 @@ border-bottom: none;
 nav-tabs .nav-item :hover {
     background-color: #b9b9b9;
     border-color:#e0dbdb;
-    color:#da601d;
+    color:#fd5f06;
   }
 //   .tab-content .tab-pane-conatiner.active:hover,
 // .tab-content .tab-pane-conatiner.highlight:hover {
@@ -238,5 +238,16 @@ nav-tabs .nav-item :hover {
 
     .buttonDiv {
         text-align: right;
+    }
+    .btn:hover{
+        border:1.4px solid #ca5010!important ;
+        color: #ca5010!important;
+    }
+    .btn-submit{
+        background-color:#fd5f06!important ;
+    }
+    .btn-submit:hover{
+        background-color:#ca5010!important ;
+        color: white!important;
     }
 }

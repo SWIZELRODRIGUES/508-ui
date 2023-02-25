@@ -8,12 +8,12 @@ function Header() {
        <div className="container-fluid">
         <div className="navbar-header">
           <a className="navbar-brand" href="#">
-            <img src={log} alt="Logo" width='40' height='40' style={{marginRight:12,marginLeft:-12}}/>
+            <img src={log} alt="Logo" width='36' height='36' style={{marginRight:12,marginLeft:-12}}/>
             <span ></span>
             {/* <span ></span>
             <span ></span> */}
             {/* <span ></span> */}
-            <span >FiveO8</span>
+            <span className='five' >FiveO8</span>
             <span ></span>
             {/* <span ></span>
             <span ></span> */}
@@ -24,15 +24,10 @@ function Header() {
            
           </a>
         </div>
-        <div className="nav navbar-nav navbar-right">
-        <button
-              type="button"
-              className="btn"
-              
-            >
-             Sign up
-            </button> 
-        </div>
+        <span style={{marginLeft:853}}><i className="fas fa-cog" ></i> Kevin Peter</span>
+        <div className="circle">
+  <p className="circle-inner">KP</p>
+</div>
        </div>
      </nav>
    );
