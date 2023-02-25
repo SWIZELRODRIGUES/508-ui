@@ -5,7 +5,7 @@ import ColorContrastIssue from './ColorContrastIssue';
 import ImageAltIssue from './ImageAltIssue';
 import './styles/StepTwo.scss'
 import Loader from './Loader';
-import { BounceLoader } from 'react-spinners';
+import FetchingErrorsLoader from './FetchingErrorsLoader';
 
 
 type StepTwoProps = {
@@ -133,9 +133,10 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
 
     return (
         <div className='step-two'>
+            
             {showLoader &&
-                <Loader />}
-            {!showTabs && <div className=" user-input-form">
+                <Loader/>}
+            {!showTabs && !showSubmitLoader && <div className=" user-input-form">
                 <div className='row user-input-row'>
                     {renderFormInputColumn(
                         <>
@@ -166,9 +167,7 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
             </div>
             }
             <>
-                <div className='row user-input-row'>
-                    {showSubmitLoader && <BounceLoader color="#000000" />}
-                </div>
+                    {showSubmitLoader && <FetchingErrorsLoader />}
 
                 {showTabs &&
                     <div  >

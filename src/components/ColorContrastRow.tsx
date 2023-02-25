@@ -13,8 +13,8 @@ type ColorContrastRowProps = {
 function ColorContrastRow(
     { handleColorChange, handleBackgroundColorChange, contrastDetails }
         : ColorContrastRowProps) {
-    const [foreground, setForeground] = useState('#f4f4f4')
-    const [background, setBackground] = useState('#f4f4f4')
+    const [foreground, setForeground] = useState(contrastDetails['suggested_colors']['color'])
+    const [background, setBackground] = useState(contrastDetails['suggested_colors']['background-color'])
 
     const yellow = ColorContrastCalc.colorFrom(foreground);
     const black = ColorContrastCalc.colorFrom(background);
@@ -34,7 +34,8 @@ function ColorContrastRow(
                 <div
                     id={`${contrastDetails?.id}-foreground`}
                     className='current-color-box'
-                    style={{ backgroundColor: contrastDetails['suggested_colors']['color'] }} />
+                    style={{ backgroundColor: contrastDetails['suggested_colors']['color'] }}
+                    />
                 <HuePicker
                     color={contrastDetails['suggested_colors']['color']}
                     onChange={(color: any) => {
@@ -44,7 +45,8 @@ function ColorContrastRow(
                     } />
             </div>
             <div className='col-md-4'>
-                Current Background Color
+               
+                 Current Background Color
                 <div
                     className='current-color-box'
                     style={{ backgroundColor: contrastDetails['current_colors']['background-color'] }} />
