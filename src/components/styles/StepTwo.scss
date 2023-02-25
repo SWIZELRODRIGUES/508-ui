@@ -162,12 +162,15 @@ nav-tabs .nav-item :hover {
         align-items: center;
 
         .contrast-check {
-           display: flex;
-           align-items: center;
 
             svg {
                 fill: green;
                 margin-right: 0.5rem;
+            }
+        }
+        .contrast-cross{
+            svg {
+                fill: red;
             }
         }
     }
