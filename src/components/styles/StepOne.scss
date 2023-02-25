@@ -12,7 +12,7 @@
   max-width: 80%;}
   // .SectionDiv{ width: 800px;}
   .cartPanel{  width: 150px;
-     height:120px; float: left; margin-right: 15px;
+     height:120px; float: left; margin-right: 25px;
       margin-bottom: 25px; border-radius: 10px; 
       background-color: white; padding:12px; 
       text-align: center;}
@@ -66,6 +66,7 @@
   outline: none;
   box-shadow: none;
   transition: all 0.2s;
+  margin-right: 25px;
 }
 
 .my-btn:hover {
