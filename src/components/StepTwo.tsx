@@ -26,7 +26,7 @@ const renderTabContent = (activeTab, accessibilityErrors, errorData, tab) => {
   switch (activeTab) {
     case 1:
       return (
-        <ul >
+        <ul className='errordisplay'>
           {accessibilityErrors
             ?.filter((error: any) => !tab.excludeError?.includes(error.id))
             ?.flatMap((error: any) => error.nodes)
@@ -46,7 +46,7 @@ const renderTabContent = (activeTab, accessibilityErrors, errorData, tab) => {
 
     case 3:
       return (
-        <ul>
+        <ul className='colorerrors'>
           <ColorContrastIssue
             contrastData={errorData ? errorData["color_contrast"] : null}
           />
@@ -62,10 +62,10 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
   const [showSubmitLoader, setShowSubmitLoader] = useState(false);
   const [showTabs, setShowTabs] = useState(false);
   const [accessibilityErrors, setAccessibilityErrors] = useState<any>(
-    
+   [{"description":"Ensures every HTML document has a lang attribute","help":"<html> element must have a lang attribute","helpUrl":"https://dequeuniversity.com/rules/axe/3.1/html-has-lang?application=axeAPI","id":"html-has-lang","impact":"serious","nodes":[{"all":[],"any":[{"data":null,"id":"has-lang","impact":"serious","message":"The <html> element does not have a lang attribute","relatedNodes":[]}],"failureSummary":"Fix any of the following:\n  The <html> element does not have a lang attribute","html":"<html>","impact":"serious","none":[],"target":["html"]}],"tags":["cat.language","wcag2a","wcag311"]},{"description":"Ensures <img> elements have alternate text or a role of none or presentation","help":"Images must have alternate text","helpUrl":"https://dequeuniversity.com/rules/axe/3.1/image-alt?application=axeAPI","id":"image-alt","impact":"critical","nodes":[{"all":[],"any":[{"data":null,"id":"has-alt","impact":"critical","message":"Element does not have an alt attribute","relatedNodes":[]},{"data":null,"id":"aria-label","impact":"serious","message":"aria-label attribute does not exist or is empty","relatedNodes":[]},{"data":null,"id":"aria-labelledby","impact":"serious","message":"aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty","relatedNodes":[]},{"data":null,"id":"non-empty-title","impact":"serious","message":"Element has no title attribute or the title attribute is empty","relatedNodes":[]},{"data":null,"id":"role-presentation","impact":"minor","message":"Element's default semantics were not overridden with role=\"presentation\"","relatedNodes":[]},{"data":null,"id":"role-none","impact":"minor","message":"Element's default semantics were not overridden with role=\"none\"","relatedNodes":[]}],"failureSummary":"Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute or the title attribute is empty\n  Element's default semantics were not overridden with role=\"presentation\"\n  Element's default semantics were not overridden with role=\"none\"","html":"<img _ngcontent-knv-c12=\"\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Arduino_ftdi_chip-1.jpg/1024px-Arduino_ftdi_chip-1.jpg\">","impact":"critical","none":[],"target":["img:nth-child(1)"]},{"all":[],"any":[{"data":null,"id":"has-alt","impact":"critical","message":"Element does not have an alt attribute","relatedNodes":[]},{"data":null,"id":"aria-label","impact":"serious","message":"aria-label attribute does not exist or is empty","relatedNodes":[]},{"data":null,"id":"aria-labelledby","impact":"serious","message":"aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty","relatedNodes":[]},{"data":null,"id":"non-empty-title","impact":"serious","message":"Element has no title attribute or the title attribute is empty","relatedNodes":[]},{"data":null,"id":"role-presentation","impact":"minor","message":"Element's default semantics were not overridden with role=\"presentation\"","relatedNodes":[]},{"data":null,"id":"role-none","impact":"minor","message":"Element's default semantics were not overridden with role=\"none\"","relatedNodes":[]}],"failureSummary":"Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute or the title attribute is empty\n  Element's default semantics were not overridden with role=\"presentation\"\n  Element's default semantics were not overridden with role=\"none\"","html":"<img _ngcontent-knv-c12=\"\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Audion_receiver.jpg/1024px-Audion_receiver.jpg\">","impact":"critical","none":[],"target":["img:nth-child(2)"]},{"all":[],"any":[{"data":null,"id":"has-alt","impact":"critical","message":"Element does not have an alt attribute","relatedNodes":[]},{"data":null,"id":"aria-label","impact":"serious","message":"aria-label attribute does not exist or is empty","relatedNodes":[]},{"data":null,"id":"aria-labelledby","impact":"serious","message":"aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty","relatedNodes":[]},{"data":null,"id":"non-empty-title","impact":"serious","message":"Element has no title attribute or the title attribute is empty","relatedNodes":[]},{"data":null,"id":"role-presentation","impact":"minor","message":"Element's default semantics were not overridden with role=\"presentation\"","relatedNodes":[]},{"data":null,"id":"role-none","impact":"minor","message":"Element's default semantics were not overridden with role=\"none\"","relatedNodes":[]}],"failureSummary":"Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute or the title attribute is empty\n  Element's default semantics were not overridden with role=\"presentation\"\n  Element's default semantics were not overridden with role=\"none\"","html":"<img _ngcontent-knv-c12=\"\" src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Componentes.JPG/1280px-Componentes.JPG\">","impact":"critical","none":[],"target":["img:nth-child(3)"]},{"all":[],"any":[{"data":null,"id":"has-alt","impact":"critical","message":"Element does not have an alt attribute","relatedNodes":[]},{"data":null,"id":"aria-label","impact":"serious","message":"aria-label attribute does not exist or is empty","relatedNodes":[]},{"data":null,"id":"aria-labelledby","impact":"serious","message":"aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty","relatedNodes":[]},{"data":null,"id":"non-empty-title","impact":"serious","message":"Element has no title attribute or the title attribute is empty","relatedNodes":[]},{"data":null,"id":"role-presentation","impact":"minor","message":"Element's default semantics were not overridden with role=\"presentation\"","relatedNodes":[]},{"data":null,"id":"role-none","impact":"minor","message":"Element's default semantics were not overridden with role=\"none\"","relatedNodes":[]}],"failureSummary":"Fix any of the following:\n  Element does not have an alt attribute\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute or the title attribute is empty\n  Element's default semantics were not overridden with role=\"presentation\"\n  Element's default semantics were not overridden with role=\"none\"","html":"<img _ngcontent-knv-c12=\"\" src=\"https://upload.wikimedia.org/wikipedia/commons/3/32/HitachiJ100A.jpg\">","impact":"critical","none":[],"target":["img:nth-child(4)"]}],"tags":["cat.text-alternatives","wcag2a","wcag111","section508","section508.22.a"]},{"description":"Ensures every form element has a label","help":"Form elements must have labels","helpUrl":"https://dequeuniversity.com/rules/axe/3.1/label?application=axeAPI","id":"label","impact":"critical","nodes":[{"all":[],"any":[{"data":null,"id":"aria-label","impact":"serious","message":"aria-label attribute does not exist or is empty","relatedNodes":[]},{"data":null,"id":"aria-labelledby","impact":"serious","message":"aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty","relatedNodes":[]},{"data":null,"id":"implicit-label","impact":"critical","message":"Form element does not have an implicit (wrapped) <label>","relatedNodes":[]},{"data":null,"id":"explicit-label","impact":"critical","message":"Form element does not have an explicit <label>","relatedNodes":[]},{"data":null,"id":"non-empty-title","impact":"serious","message":"Element has no title attribute or the title attribute is empty","relatedNodes":[]}],"failureSummary":"Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Form element does not have an implicit (wrapped) <label>\n  Form element does not have an explicit <label>\n  Element has no title attribute or the title attribute is empty","html":"<input _ngcontent-knv-c12=\"\" type=\"text\" id=\"email\" placeholder=\"email\">","impact":"critical","none":[],"target":["#email"]},{"all":[],"any":[{"data":null,"id":"aria-label","impact":"serious","message":"aria-label attribute does not exist or is empty","relatedNodes":[]},{"data":null,"id":"aria-labelledby","impact":"serious","message":"aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty","relatedNodes":[]},{"data":null,"id":"implicit-label","impact":"critical","message":"Form element does not have an implicit (wrapped) <label>","relatedNodes":[]},{"data":null,"id":"explicit-label","impact":"critical","message":"Form element does not have an explicit <label>","relatedNodes":[]},{"data":null,"id":"non-empty-title","impact":"serious","message":"Element has no title attribute or the title attribute is empty","relatedNodes":[]}],"failureSummary":"Fix any of the following:\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Form element does not have an implicit (wrapped) <label>\n  Form element does not have an explicit <label>\n  Element has no title attribute or the title attribute is empty","html":"<input _ngcontent-knv-c12=\"\" type=\"password\" id=\"password\" placeholder=\"password\">","impact":"critical","none":[],"target":["#password"]}],"tags":["cat.forms","wcag2a","wcag332","wcag131","section508","section508.22.n"]}]
   );
   const [errorData, setErrorData] = useState(
-   
+    { "img_alt": { "angular-demo\\src\\app\\app.component.html": { "img-alt": [{ "sourceline": 12, "selector": "img[src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Arduino_ftdi_chip-1.jpg/1024px-Arduino_ftdi_chip-1.jpg\"]", "old_value": null, "new_value": "Smartphone", "issue": "img tag missing alt attribute" }, { "sourceline": 13, "selector": "img[src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Audion_receiver.jpg/1024px-Audion_receiver.jpg\"]", "old_value": null, "new_value": "Smartphone", "issue": "img tag missing alt attribute" }, { "sourceline": 14, "selector": "img[src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Componentes.JPG/1280px-Componentes.JPG\"]", "old_value": null, "new_value": "Smartphone", "issue": "img tag missing alt attribute" }, { "sourceline": 15, "selector": "img[src=\"https://upload.wikimedia.org/wikipedia/commons/3/32/HitachiJ100A.jpg\"]", "old_value": null, "new_value": "Smartphone", "issue": "img tag missing alt attribute" }] }, "angular-demo\\src\\index.html": { "img-alt": [] } }, "color_contrast": { "angular-demo\\src\\app\\app.component.css": [{ "selector": "button", "current_colors": { "color": "#f0f8ff", "background-color": "#8a2be2" }, "suggested_colors": { "color": "#ffffff", "background-color": "#000000" } }, { "selector": ".navbar", "current_colors": { "color": "#f5f5dc", "background-color": "#00008b" }, "suggested_colors": { "color": "#ffffff", "background-color": "#000000" } }, { "selector": "#brand", "current_colors": { "color": "#a52a2a", "background-color": "#7fffd4" }, "suggested_colors": { "color": "#ffffff", "background-color": "#000000" } }], "angular-demo\\src\\styles.css": [] } }
   );
   const [activeTab, setActiveTab] = useState(1);
   const tabs = [
@@ -106,12 +106,12 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
       body: formData,
     });
    
-    const response = await fetch(`${API_URL}/issues?url=${hostURL}`, {
-      method: "GET",
-    });
-    const data = await response.json();
-    // Set the accessibility errors and their categories in the state
-    setAccessibilityErrors(data);
+    // const response = await fetch(`${API_URL}/issues?url=${hostURL}`, {
+    //   method: "GET",
+    // });
+    // const data = await response.json();
+    // // Set the accessibility errors and their categories in the state
+    // setAccessibilityErrors(data);
 
     await fetch(`${API_URL}/fix_all`, {
       method: "POST",
@@ -134,14 +134,14 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
     event.preventDefault();
     setShowLoader(true);
 
-    await fetch(`${API_URL}/update_changes`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(errorData),
-    });
+    // await fetch(`${API_URL}/update_changes`, {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json, text/plain, */*",
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(errorData),
+    // });
 
     setTimeout(() => {
       setShowLoader(false);

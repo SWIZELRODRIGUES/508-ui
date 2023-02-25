@@ -20,10 +20,8 @@ function FetchingErrorsLoader() {
     return (
         <div className="loader-container">
             <div className="fetching-loader-container">
-                <ClipLoader color="#0d6efd" size={75} speedMultiplier={0.5} className={"loader-circle"} />
-                <div className="error-loader-percentage"> {10 * progress + '%'}</div>
-
-                <br />
+                <ClipLoader color="#0d6efd" size={85} speedMultiplier={0.5} className={"loader-circle"} />
+                <div className="error-loader-percentage"> {10 * progress + '%'}</div> 
                 <div className="error-status">
                     <div className='loader-text'>{stepProgressArr[progressCounter]}</div>
                 </div>
