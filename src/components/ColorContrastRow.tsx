@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 //@ts-ignore
-import { HuePicker, AlphaPicker } from 'react-color'
+import { HuePicker } from 'react-color'
 //@ts-ignore
 import { ColorContrastCalc } from 'color-contrast-calc';
 

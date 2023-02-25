@@ -19,7 +19,6 @@ function Header() {
             <span ></span>
             <span ></span>
             <span >FiveO8</span>
-            {/* <img src={logo} alt="Logo" width='80' height='34'/> */}
            
           </a>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ClipLoader, BarLoader } from 'react-spinners';
+import { ClipLoader } from 'react-spinners';
 import './styles/FetchingErrorsLoader.scss'
 
 function FetchingErrorsLoader() {

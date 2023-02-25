@@ -11,7 +11,7 @@ import {
 import { NavLink } from 'react-router-dom';
 import './Sidebar.css';
 import log from '../../assets/persistentLogo.svg';
-import logo from '../../assets/508.png';
+
 const Sidebar = () => {
   const [selected, setSelected] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -33,7 +33,6 @@ const Sidebar = () => {
         
   
 </a>
-{/* <img src="C:\Users\kevin_peter\Documents\semicolon\508-ui\src\assets\508.png" alt="Icon" style={{ width: '200px', height: '200px', marginRight: '16px' }} onClick={toggleSidebar} /> */}
         </CDBSidebarHeader>
 
         <CDBSidebarContent className="sidebar-content">

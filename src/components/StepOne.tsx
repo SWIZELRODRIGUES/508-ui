@@ -1,6 +1,5 @@
 
 import React, { useState } from 'react';
-import Tab from './Tab';
 import './styles/StepOne.scss';
 import angularIcon from '../assets/angular_icon.png';
 import htmlIcon from '../assets/html5_icon.png';

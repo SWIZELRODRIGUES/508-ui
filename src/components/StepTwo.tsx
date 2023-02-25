@@ -7,7 +7,6 @@ import './styles/StepTwo.scss';
 import Loader from './Loader';
 import FetchingErrorsLoader from './FetchingErrorsLoader';
 import logo from '../assets/508.png';
-import { BounceLoader } from "react-spinners";
 
 
 type StepTwoProps = {
@@ -117,7 +116,7 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
     await fetch(`${API_URL}/fix_all`, {
       method: "POST",
   })
-  
+
     const errorData = await fetch(`${API_URL}/suggest_changes`, {
         method: "GET"
     })
