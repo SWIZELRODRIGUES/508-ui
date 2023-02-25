@@ -11,7 +11,7 @@ import {
 import { NavLink } from 'react-router-dom';
 import './Sidebar.css';
 import log from '../../assets/persistentLogo.svg';
-
+import logo from '../../assets/508.png';
 const Sidebar = () => {
   const [selected, setSelected] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -66,7 +66,8 @@ const Sidebar = () => {
           <div style={{ marginTop: '5px' }}>
             <strong>Equal Access</strong>
           </div>
-          <div style={{ marginBottom: '4px' }}></div>
+          <div style={{ marginBottom: '20px' }}></div>
+
         </CDBSidebarFooter>
       </CDBSidebar>
 
