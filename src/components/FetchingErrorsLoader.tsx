@@ -5,7 +5,7 @@ import './styles/FetchingErrorsLoader.scss'
 function FetchingErrorsLoader() {
     
     const [progressCounter, setProgressCounter] = useState(0)
-    const stepProgressArr = ['Fixing images...', 'Fixing constrast...', 'Fixing tags...']
+    const stepProgressArr = ['Parsing HTML...', 'Fetching image errors...', 'Analysing color contrast issues...']
 
     setTimeout(() => {
         if (progressCounter < stepProgressArr.length - 1) {
