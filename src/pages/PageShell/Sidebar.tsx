@@ -25,7 +25,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div style={{ position: 'fixed', top: -43, left: 0, bottom: 0, zIndex: 3 ,paddingBottom:0}}>
+    <div style={{ position: 'fixed', top: -40, left: 0, bottom: 0, zIndex: 3 ,paddingBottom:0}}>
       <CDBSidebar className='sidebar-wrapper' textColor="#323130" backgroundColor="#fff" isOpen={isSidebarOpen}>
         <CDBSidebarHeader className="sidebar-header">
        <div></div>
@@ -58,15 +58,15 @@ const Sidebar = () => {
             </NavLink>
           </CDBSidebarMenu>
         </CDBSidebarContent>
-        <div className='border'></div>
-        <CDBSidebarFooter style={{ textAlign: 'center', fontSize: '1.1rem',paddingTop:25,paddingBottom:20 }}>
+        <div className="borderOne" ></div>
+        <CDBSidebarFooter style={{ textAlign: 'center', fontSize: '1.0rem',paddingTop:25,paddingBottom:20 }}>
           <div style={{ padding: '4px 4px' }}>
             <em style={selected === 4 ? { borderBottom: '1px solid #fff' } : null}>"Accessibility is not a feature,<br/>it is a human right."</em>
           </div>
-          <div style={{ marginTop: '5px' }}>
+          <div style={{ marginTop: '5px' ,fontSize: '1.0rem' }}>
             <strong>Equal Access</strong>
           </div>
-          <div style={{ marginBottom: '20px' }}></div>
+          <div style={{ marginBottom: '0px' }}></div>
 
         </CDBSidebarFooter>
       </CDBSidebar>
