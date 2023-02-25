@@ -143,15 +143,13 @@ function StepTwo({ setCurrentStep }: StepTwoProps) {
       body: JSON.stringify(errorData),
     });
 
-    setTimeout(() => {
       setShowLoader(false);
       setCurrentStep(3);
-    }, 4000);
   };
   return (
     <div className="step-two">
       {showLoader && <Loader />}
-      {!showTabs && !showSubmitLoader && (
+      {!showTabs  && (
         <div className=" user-input-form">
            <div className='imgLogo'> <img src={logo} alt="logo" width='180' height='70'/></div>
           <div className="row user-input-row">
